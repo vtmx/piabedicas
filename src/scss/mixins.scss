@@ -1,0 +1,16 @@
+//
+// Mixins
+// --------------------------------------------------
+
+@mixin clearfix {
+	display: table;
+	clear: both;
+	content: ' ';
+}
+
+@mixin piabebox {
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
