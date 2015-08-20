@@ -250,6 +250,8 @@ $(function(){
 		// remove mouse behaivor
 		e.preventDefault();
 
+		$('html, body').animate({ scrollTop: 0 });
+
 		// atributes
 		var url = $(this).attr('href');
 		var content = $('#stores .store-link');
@@ -286,9 +288,26 @@ $(function(){
 	// add rel group
 	$('.gallery .thumbnail').attr('rel' , 'group');
 
-	// start fancybox
+	// fancybox start
 	$('.lightbox, .gallery .thumbnail').fancybox({
-		padding: ([15, 15, 15, 15]), helpers:{ overlay:{css:{ 'background':'rgba(0, 0, 0, 0.3)' }}, title:{ type:'inside' }}
+		padding: ([15, 15, 15, 15]),
+		helpers:{ 
+			overlay: { css: { 'background': 'rgba(0, 0, 0, 0.3)' } },
+			title: { type: 'inside' }
+		}
+	});
+
+	// fancybox map
+	$('.lightbox-map').fancybox({
+		helpers: {	media : {} }
+	});
+
+	// fancybox contact
+	$('.lightbox-contact').fancybox({
+		'type': 'iframe',
+		maxWidth: 600
+		//'scrolling': 'no',
+		//'iframe': {'scrolling': 'no'}
 	});
 
 

@@ -34,7 +34,7 @@
 							</ul>
 						</li>
 
-						<li class="menu-item-contact"><a class="lightbox" href="http://localhost/piabedicas/?page_id=57">Contato</a></li>
+						<li class="menu-item-contact"><a class="lightbox-contact" href="http://localhost/piabedicas/?page_id=57">Contato</a></li>
 					</ul>
 				</nav>
 

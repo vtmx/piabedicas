@@ -11,7 +11,7 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
 // =body
 
 body {
-	background: #fff;
+	background-color: #efefef;
 	font: 15px/1.6 sans-serif;
 	color: #444;
 }
@@ -161,7 +161,7 @@ label:hover {
 input[type='text'], input[type='email'], select, textarea {
 	display: inline-block;
 	width: 100%;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 2px;
@@ -268,8 +268,7 @@ td {
 // =utilies
 // --------------------------------------------------
 
-.container,
-.owl-carousel  {
+.container, .owl-carousel  {
 	max-width: 1000px;
 	margin: 0 auto;
 }
@@ -293,7 +292,7 @@ td {
 .gallery a {
 	display: block;
 	line-height: 0;
-	border: 3px solid #ddd;
+	border: 1px solid #ddd;
 }
 
 .gallery a:hover {
@@ -431,21 +430,11 @@ nav ul {
 	color: #b1bccd;
 }
 
-header .logo:hover,
-header .logo:focus, .home .logo,
-.menu > li:hover,
-.menu > li > a:hover,
-.menu > li:hover > a,
-.menu > li:focus,
-.menu > li > a:focus,
-.menu > li:focus > a,
-.menu > .current-menu-item > a,
-.menu > .current-menu-parent > a,
-.page-template-store .menu-item-has-children > a, 
-.single-comercio .menu > .menu-item-store > a,
-.single-comercio .menu > .menu-item-type-custom > a,
-.page-template-contact .menu-item-contact > a,
-.blog .menu-item-blog > a {
+header .logo:hover, header .logo:focus, .home .logo,
+.menu > li:hover, .menu > li > a:hover, .menu > li:hover > a,
+.menu > li:focus, .menu > li > a:focus, .menu > li:focus > a,
+.page-template-page-comercios .menu-item-store > a, .tax-comercio-categoria .menu-item-store > a, .single-comercio .menu-item-store > a,
+.page-template-page-contato .menu-item-contact a {
 	background: lighten($color-secondary, 8%);
 	color: #fff;
 }
@@ -453,11 +442,6 @@ header .logo:focus, .home .logo,
 .menu > li > a:active {
 	color: lighten($color-secondary, 50%);
 	transition: none;
-}
-
-.single-comercio .menu > .menu-item-type-custom a:after {
-	font-family: fontawesome;
-	content: ' \f107';
 }
 
 /* =sub-menu */
@@ -497,7 +481,7 @@ header .logo:focus, .home .logo,
 .sub-menu a:hover, .sub-menu a:focus,
 .sub-menu > .current-cat a {
 	padding-left: 18px;
-	background: #f7f7f7;
+	background: #fafafa;
 	color: $color-primary;
 }
 
@@ -871,6 +855,7 @@ main .gallery a:hover img {
 
 #stores {
 	margin-left: -10px;
+	padding: 0 15px;
 }
 
 .store-link {
@@ -905,7 +890,7 @@ main .gallery a:hover img {
 	width: 200px;
 	height: 160px;
 	margin-bottom: 7px;
-	border: 1px solid #dee2e5;
+	border: 1px solid #e6e6e6;
 	border-radius: 2px;
 	background: #fff url(#{$path-img}/loading.gif) no-repeat center center;
 	transition: all 0.2s;
@@ -964,7 +949,7 @@ main .gallery a:hover img {
 }
 
 .pagination a:hover {
-	background: #f7f7f7;
+	background: #fafafa;
 	color: $color-primary;
 }
 
@@ -998,49 +983,57 @@ main .gallery a:hover img {
 // =store-single
 // --------------------------------------------------
 
-.single-comercio header {
-	margin-bottom: 0;
-}
-
-.single-comercio main .container, .single-comercio main .store, .single-comercio footer .container {
+.single-comercio main .container {
 	max-width: 970px;
 }
 
-.container-store {
+.store-wrap {
+	position: relative;
+	max-width: 970px;
 	margin: 0 auto 30px auto;
-	border-bottom: 1px solid #edeff2;
-	background: #f8f9fb;
+	padding: 20px 20px 0 20px;
+	border: 1px solid #ddd;
+	background: #fff;
 }
 
-.store {
+.store-details {
 	overflow: hidden;
-	margin: 0 auto;
-	padding: 20px 0 0 0;
+	margin-bottom: 10px;
 }
 
-.store .store-thumb {
+.store-details dt {
+	float: left;
+	clear: left;
+	margin-right: .4375rem;
+}
+
+.store-details dd {
+	float: left;
+}
+
+.store-details .store-thumb {
 	display: block;
 	float: left;
 	width: 250px;
 	height: 200px;
 	margin: 0 20px 20px 0;
-	border: 1px solid #dee2e5;
+	border: 1px solid #e6e6e6;
 	background: #fff url(#{$path-img}/loading.gif) no-repeat center center;
 }
 
-.store h2 {
+.store-details h2 {
 	margin-bottom: 0;
 	font-size: 24px;
 	line-height: 1;
 }
 
-.store h3 {
+.store-details h3 {
 	margin-bottom: 10px;
 	padding-bottom: 7px;
 	border-bottom: 1px solid #edeff2;
 }
 
-.store ul {
+.store-details ul {
 	margin-bottom: 15px;
 	padding: 0;
 	list-style: none;
@@ -1065,7 +1058,7 @@ main .gallery a:hover img {
 .store-pages .tab li {
 	float: left;
 	position: relative;
-	margin: 0 5px -2px 0;
+	margin: 0 -1px -2px 0;
 }
 
 .store-pages .tab .active {
@@ -1078,7 +1071,6 @@ main .gallery a:hover img {
 	background: #f7f8f9;
 	border: 1px solid #ddd;
 	border-bottom-color: transparent;
-	border-radius: 2px 3px 0 0;
 	color: #777;
 }
 
@@ -1096,13 +1088,13 @@ main .gallery a:hover img {
 .store-pages .tab .active a {
 	background: #fff;
 	border-color: #ddd;
-	border-top: 2px solid #00abc9;
+	border-top: 1px solid #00abc9;
 	border-bottom-color: transparent;
 	color: $color-primary;
 }
 
 .store-pages .tab .active a {
-	padding-bottom: 7px;
+	padding-bottom: 8px;
 	border-bottom-color: transparent;
 }
 
@@ -1115,8 +1107,9 @@ main .gallery a:hover img {
 .store-pages .tab-content {
 	min-height: 410px;
 	margin-bottom: 30px;
-	padding: 20px 20px 0;
-	border: 1px solid #ddd;
+	padding-top: 20px;
+	border-top: 1px solid #ddd;
+	background: #fff;
 	border-top-left-radius: 0;
 }
 
@@ -1142,8 +1135,9 @@ main .gallery a:hover img {
 .single-comercio #comments {
 	clear: both;
 	margin: 0 auto;
-	padding: 10px 20px 5px 20px;
+	padding: 10px 20px 0 20px;
 	border: 1px solid #ddd;
+	background: #fff;
 }
 
 //
@@ -1179,11 +1173,11 @@ main .gallery a:hover img {
 	overflow: hidden;
 	width: 465px;
 	height: 195px;
-	margin: 0 10px 30px;
+	margin: 0 10px 20px;
 	padding: 20px;
 	background: #fff;
 	border: 1px solid #ddd;
-	border-radius: 5px;
+	border-radius: 2px;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 	line-height: 20px;
 	color: #666;
@@ -1267,7 +1261,6 @@ main .gallery a:hover img {
 .page-content {
 	float: left;
 	width: 670px;
-	padding: 15px 20px 0;
 	margin: 0 30px 0 0;
 }
 
@@ -1290,10 +1283,6 @@ main .gallery a:hover img {
 }
 
 // single
-
-.single #comments {
-	margin-bottom: 5px;
-}
 
 .single .page-content article {
 	margin-bottom: 20px;
@@ -1387,6 +1376,55 @@ main .gallery a:hover img {
 .page-aside .widget:last-child,
 .page-aside .widget:last-child ul {
 	margin-bottom: 0;
+}
+
+//
+// =contact
+// --------------------------------------------------
+
+.page-template-page-contato {
+	background: #fff;
+}
+
+.page-template-page-contato header, .page-template-page-contato footer {
+	display: none;
+}
+
+.page-template-page-contato main, .page-template-page-contato p {
+	margin: 0;
+}
+
+.page-template-page-contato p:first-child {
+	display: none;
+}
+
+.wpcf7-form {
+	padding: 7px 10px 10px 10px;
+}
+
+.wpcf7-form input, .wpcf7-form textarea {
+	margin-top: 5px;
+}
+
+.wpcf7-not-valid {
+	border-color: red !important;
+}
+
+.wpcf7-not-valid:focus {
+	border-color: $color-primary !important;
+}
+
+
+.wpcf7-not-valid-tip {
+	margin-top: -5px;
+}
+
+.wpcf7-response-output {
+	margin: 20px 0 0 0 !important;
+	padding: 5px !important;
+	border-color: #ddd !important;
+	border-width: 1px !important;
+    background: #f8f9fb !important;
 }
 
 //
@@ -1509,11 +1547,15 @@ footer {
 		margin: 20px 0 0 0;
 	}
 
+	.single-comercio .store-wrap {
+		margin: 0 20px;
+	}
+
 	.home main {
 		padding: 0;
 	}
 
-	/* =slider */
+	// =slider
 
 	.owl-wrap {
 		height: auto;
@@ -1522,6 +1564,19 @@ footer {
 
 	.owl-wrapper-outer {
 		height: auto;
+	}
+
+	// =news
+	.news {
+		text-align: center;
+	}
+
+	.news .new {
+		display: inline-block;
+		float: none;
+		width: 30%;
+		margin: 0 10px 20px;
+		text-align: left;
 	}
 
 	// navigation
