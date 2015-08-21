@@ -11,7 +11,6 @@
 	</div>
 
 	<aside class="page-aside">
-		<h3>Categorias</h3>
 		<?php dynamic_sidebar('sidebar-blog'); ?>
 	</aside>
 </div>

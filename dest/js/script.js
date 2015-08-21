@@ -271,7 +271,7 @@ $(function(){
 	// store category active
 	$('.store-categories a').click( function(){
 		$('.store-categories li').removeClass('active current-cat');
-		$(this).parent().addClass('active');
+		$(this).parent().addClass('current-cat');
 	});
 
 
@@ -291,7 +291,7 @@ $(function(){
 	// fancybox start
 	$('.lightbox, .gallery .thumbnail').fancybox({
 		padding: ([15, 15, 15, 15]),
-		helpers:{ 
+		helpers:{
 			overlay: { css: { 'background': 'rgba(0, 0, 0, 0.3)' } },
 			title: { type: 'inside' }
 		}

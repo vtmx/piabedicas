@@ -2,17 +2,17 @@
 
 <style>
 	body {
-		/*background: #efefef url(http://placehold.it/1920x500) no-repeat center 55px;*/
+		background-attachment: fixed;
+		background-image: url(<?php the_field( 'store-background-image' ); ?>);
 
-		background: url(<?php the_field( 'store-background-image' ); ?>) fixed;
-		
 		<?php // if deselect repeat ?>
 		<?php if( !in_array('repeat', get_field('store-background-repeat') ) ) { ?>
-			background: url(<?php the_field( 'store-background-image' ); ?>) fixed;
+			background-attachment: scroll;
+			background: url(<?php the_field( 'store-background-image' ); ?>);
 			background-size: contain;
 			background-repeat: no-repeat;
 		<?php } ?>
-	}	
+	}
 </style>
 
 <div class="store-wrap">
@@ -28,7 +28,7 @@
 
 		<div class="store-info">
 			<h2 class="store-name"><?php the_title(); ?></h2>
-			<h3 class="store-category-info"><?php echo '<a href="' . $term_link . '">' . $term->name . '</a>'; ?></h3>
+			<h3 class="store-category"><?php echo '<a href="' . $term_link . '">' . $term->name . '</a>'; ?></h3>
 
 			<dl>
 				<dt class="address">Endereço: </dt
@@ -41,7 +41,7 @@
 				<dd><?php the_field( 'store-email' ); ?></dd>
 
 				<?php // If site of store exist ?>
-				<?php if ( get_field('store-site') ): ?> 
+				<?php if ( get_field('store-site') ): ?>
 					<dt>Site:</dt>
 					<dd><a href="http://<?php the_field( 'store-site' ); ?>" target="_blank"><?php the_field( 'store-site' ); ?></a></dd>
 				<?php endif; ?>
@@ -84,8 +84,52 @@
 
 </div><!-- .store-wrap -->
 
+<?php
+	//Get array of terms
+	$terms = get_the_terms( $post->ID , 'comercio-categoria', 'string');
+	//Pluck out the IDs to get an array of IDS
+	$term_ids = wp_list_pluck( $terms, 'term_id' );
+
+	//Query posts with tax_query. Choose in 'IN' if want to query posts with any of the terms
+	//Chose 'AND' if you want to query for posts with all terms
+	$second_query = new WP_Query( array(
+	'post_type' => 'comercio',
+	'tax_query' => array(
+	    array(
+	        'taxonomy' => 'comercio-categoria',
+	        'field' => 'term_id',
+	        'terms'    => $term_ids,
+	     )),
+		'posts_per_page' => 12,
+		'orderby' => 'rand',
+		'post__not_in'=>array($post->ID)
+	) );
+?>
+
+<?php if($second_query->have_posts()) { ?>
+	<div class="container">
+		<div class="stores-related">
+			<h3>Comercios da mesma categoria</h3>
+			<div class="stores">
+				<?php while ($second_query->have_posts() ) : $second_query->the_post(); ?>
+					<a class="store-link" href="<?php the_permalink(); ?>">
+						<?php the_post_thumbnail('thumbnail', array('size' => 'full', 'class' => 'store-thumb')); ?>
+						<h2 class="store-name"><?php the_title(); ?></h2>
+					</a>
+				<?php endwhile; wp_reset_query(); ?>
+			</div>
+			<div class="stores-related-controls">
+				<button class="prev"><i class="fa fa-angle-left"></i></button>
+				<button class="next"><i class="fa fa-angle-right"></i></button>
+			</div>
+		</div>
+	</div>
+<?php } else { ?>
+
+<?php } ?>
+
 <div class="container">
-	<div id="comments">
+	<div class="comments">
 		<div id="disqus_thread"></div>
 		<script type="text/javascript">
 			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
