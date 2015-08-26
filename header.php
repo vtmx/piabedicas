@@ -35,6 +35,7 @@
 						</li>
 
 						<li class="menu-item-contact"><a class="lightbox-contact" href="http://localhost/piabedicas/?page_id=57">Contato</a></li>
+						<li class="menu-item-contact"><a class="lightbox-contact" href="http://localhost/piabedicas/cadastro/">Cadastro</a></li>
 					</ul>
 				</nav>
 
@@ -44,6 +45,8 @@
 				</form>
 
 				<div class="ajax-loading-icon animation"></div>
+
+				<a href="http://facebook.com/piabedicas" class="facebook" target="_blank"><i class="fa fa-facebook-official"></i></a>
 			</div>
 		</header>
 

@@ -53,6 +53,7 @@
 	remove_filter( 'the_excerpt', 'wptexturize' );
 	remove_filter( 'acf_the_content', 'wpautop' );
 	remove_filter( 'acf_the_content', 'wptexturize' );
+	// define('WPCF7_AUTOP', false); make this in plugin code
 
 	// markdown support
 	add_filter( 'the_content', 'Markdown' );

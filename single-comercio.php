@@ -2,16 +2,17 @@
 
 <style>
 	body {
+		background-image: url(<?php the_field( 'store-background-image' ); ?>);
+		background-size: contain;
+		background-repeat: no-repeat;
+
+	<?php // if deselect repeat ?>
+	<?php if( in_array('repeat', get_field('store-background-repeat') ) ) { ?>
 		background-attachment: fixed;
 		background-image: url(<?php the_field( 'store-background-image' ); ?>);
-
-		<?php // if deselect repeat ?>
-		<?php if( !in_array('repeat', get_field('store-background-repeat') ) ) { ?>
-			background-attachment: scroll;
-			background: url(<?php the_field( 'store-background-image' ); ?>);
-			background-size: contain;
-			background-repeat: no-repeat;
-		<?php } ?>
+		background-size: auto;
+		background-repeat: repeat;
+	<?php } ?>
 	}
 </style>
 
@@ -30,28 +31,52 @@
 			<h2 class="store-name"><?php the_title(); ?></h2>
 			<h3 class="store-category"><?php echo '<a href="' . $term_link . '">' . $term->name . '</a>'; ?></h3>
 
-			<dl>
-				<dt class="address">Endereço: </dt
-				<dd><?php the_field('store-adress'); ?>, Piabetá, Magé, RJ - <a class="lightbox-map" href="http://maps.google.com/maps?q=<?php the_field('store-adress'); ?>,+Piabtetá,+Magé,+Rio de Janeiro,+Brasil">Mapa <i class="fa fa-map-marker"></i></a></dd>
+			<table>
+				<tr>
+					<th class="adress">Endereço: </th>
+					<td><?php the_field('store-adress'); ?>, Piabetá, Magé, RJ - <a class="lightbox-map" href="http://maps.google.com/maps?q=<?php the_field('store-adress'); ?>,+Piabtetá,+Magé,+Rio de Janeiro,+Brasil">Mapa <i class="fa fa-map-marker"></i></a></td>
+				</tr>
 
-				<dt class="tel">Telefone(s):</dt>
-				<dd><?php the_field( 'store-phone'); ?></dd>
-
-				<dt class="email">E-mail:</dt>
-				<dd><?php the_field( 'store-email' ); ?></dd>
-
-				<?php // If site of store exist ?>
-				<?php if ( get_field('store-site') ): ?>
-					<dt>Site:</dt>
-					<dd><a href="http://<?php the_field( 'store-site' ); ?>" target="_blank"><?php the_field( 'store-site' ); ?></a></dd>
-				<?php endif; ?>
-
-				<?php // If facebook of store exist ?>
 				<?php if ( get_field('store-facebook') ): ?>
-					<dt>Facebook:</dt>
-					<dd><a href="http://<?php the_field( 'store-site' ); ?>" target="_blank"><?php the_field( 'store-facebook' ); ?></a></dd>
+					<tr>
+						<th>Funcionamento:</th>
+						<td><?php the_field( 'store-operation' ); ?></td>
+					</tr>
 				<?php endif; ?>
-			</dl>
+
+				<tr>
+					<th class="tel">Telefone(s):</th>
+					<td><?php the_field( 'store-phone'); ?></td>
+				</tr>
+
+				<tr>
+					<th class="email">E-mail:</th>
+					<td><?php the_field( 'store-email' ); ?></td>
+				</tr>
+
+				<?php if ( get_field('store-site') ): ?>
+					<tr>
+						<th>Site:</th>
+						<td><a href="http://<?php the_field( 'store-site' ); ?>" target="_blank"><?php the_field( 'store-site' ); ?></a></td>
+					</tr>
+				<?php endif; ?>
+
+				<?php if ( get_field('store-facebook') ): ?>
+					<tr>
+						<th>Facebook:</th>
+						<td><a href="http://<?php the_field( 'store-facebook' ); ?>" target="_blank"><?php the_field( 'store-facebook' ); ?></a></td>
+					</tr>
+				<?php endif; ?>
+
+				<?php if ( get_field('store-others') ): ?>
+					<?php while ( have_rows('store-others') ) : the_row(); ?>
+						<tr>
+							<th><?php the_sub_field( 'store-others-term' ); ?>:</th>
+							<td><?php the_sub_field( 'store-others-description' ); ?></td>
+						</tr>
+					<?php endwhile; ?>
+				<?php endif; ?>
+			</table>
 
 		</div><!-- .store-info -->
 	</div><!-- .store-details -->
@@ -81,7 +106,6 @@
 		</div>
 
 	</div><!-- #store-pages -->
-
 </div><!-- .store-wrap -->
 
 <?php
@@ -100,7 +124,7 @@
 	        'field' => 'term_id',
 	        'terms'    => $term_ids,
 	     )),
-		'posts_per_page' => 12,
+		'posts_per_page' => 15,
 		'orderby' => 'rand',
 		'post__not_in'=>array($post->ID)
 	) );
@@ -111,16 +135,19 @@
 		<div class="stores-related">
 			<h3>Comercios da mesma categoria</h3>
 			<div class="stores">
-				<?php while ($second_query->have_posts() ) : $second_query->the_post(); ?>
-					<a class="store-link" href="<?php the_permalink(); ?>">
-						<?php the_post_thumbnail('thumbnail', array('size' => 'full', 'class' => 'store-thumb')); ?>
-						<h2 class="store-name"><?php the_title(); ?></h2>
-					</a>
-				<?php endwhile; wp_reset_query(); ?>
-			</div>
-			<div class="stores-related-controls">
-				<button class="prev"><i class="fa fa-angle-left"></i></button>
-				<button class="next"><i class="fa fa-angle-right"></i></button>
+				<div class="owl-carousel">
+					<?php while ($second_query->have_posts() ) : $second_query->the_post(); ?>
+						<a class="store-link item" href="<?php the_permalink(); ?>">
+							<?php the_post_thumbnail('thumbnail', array('size' => 'full', 'class' => 'store-thumb')); ?>
+							<h2 class="store-name"><?php the_title(); ?></h2>
+						</a>
+					<?php endwhile; wp_reset_query(); ?>
+				</div>
+
+				<div class="stores-related-controls">
+					<button class="prev"><i class="fa fa-angle-left"></i></button>
+					<button class="next"><i class="fa fa-angle-right"></i></button>
+				</div>
 			</div>
 		</div>
 	</div>
