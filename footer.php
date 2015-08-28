@@ -2,7 +2,7 @@
 
 		<footer>
 			<div class="container">
-				<div class="author">Desenvolvido por <a href="http://vitormelo.com.br">Vitor Melo</a>
+				<div class="author">Desenvolvido por <a href="http://vitormelo.com.br" target="_blank">Vitor Melo</a>
 			</div>
 		</footer>
 

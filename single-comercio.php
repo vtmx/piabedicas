@@ -25,17 +25,19 @@
 			if( $terms ) { foreach( $terms as $term ) {} $term_link = get_term_link( $term, 'categoria-comercio' );	}
 		?>
 
-		<img class="store-thumb" src="<?php the_field( 'store-logo' ); ?>" alt="Logo do comércio <?php the_title(); ?>">
+		<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'full', 'class' => 'store-thumb' ) ); ?>
 
 		<div class="store-info">
 			<h2 class="store-name"><?php the_title(); ?></h2>
 			<h3 class="store-category"><?php echo '<a href="' . $term_link . '">' . $term->name . '</a>'; ?></h3>
 
 			<table>
+				<?php if ( get_field('store-address') ): ?>
 				<tr>
-					<th class="adress">Endereço: </th>
-					<td><?php the_field('store-adress'); ?>, Piabetá, Magé, RJ - <a class="lightbox-map" href="http://maps.google.com/maps?q=<?php the_field('store-adress'); ?>,+Piabtetá,+Magé,+Rio de Janeiro,+Brasil">Mapa <i class="fa fa-map-marker"></i></a></td>
+					<th class="address">Endereço: </th>
+					<td><?php the_field('store-address'); ?>, Piabetá, Magé, RJ - <a class="lightbox-map" href="http://maps.google.com/maps?q=<?php the_field('store-address'); ?>,+Piabtetá,+Magé,+RJ">Mapa <i class="fa fa-map-marker"></i></a></td>
 				</tr>
+				<?php endif; ?>
 
 				<?php if ( get_field('store-facebook') ): ?>
 					<tr>
@@ -44,15 +46,19 @@
 					</tr>
 				<?php endif; ?>
 
+				<?php if ( get_field('store-phone') ): ?>
 				<tr>
 					<th class="tel">Telefone(s):</th>
 					<td><?php the_field( 'store-phone'); ?></td>
 				</tr>
+				<?php endif; ?>
 
-				<tr>
-					<th class="email">E-mail:</th>
-					<td><?php the_field( 'store-email' ); ?></td>
-				</tr>
+				<?php if ( get_field('store-email') ): ?>
+					<tr>
+						<th class="email">E-mail:</th>
+						<td><?php the_field( 'store-email' ); ?></td>
+					</tr>
+				<?php endif; ?>
 
 				<?php if ( get_field('store-site') ): ?>
 					<tr>
@@ -130,7 +136,7 @@
 	) );
 ?>
 
-<?php if($second_query->have_posts()) { ?>
+<?php if( $second_query->have_posts() ) { ?>
 	<div class="container">
 		<div class="stores-related">
 			<h3>Comercios da mesma categoria</h3>
@@ -138,7 +144,7 @@
 				<div class="owl-carousel">
 					<?php while ($second_query->have_posts() ) : $second_query->the_post(); ?>
 						<a class="store-link item" href="<?php the_permalink(); ?>">
-							<?php the_post_thumbnail('thumbnail', array('size' => 'full', 'class' => 'store-thumb')); ?>
+							<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'full', 'class' => 'store-thumb' ) ); ?>
 							<h2 class="store-name"><?php the_title(); ?></h2>
 						</a>
 					<?php endwhile; wp_reset_query(); ?>
@@ -158,7 +164,7 @@
 <div class="container">
 	<div class="comments">
 		<div id="disqus_thread"></div>
-		<script type="text/javascript">
+		<script>
 			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 			var disqus_shortname = 'piabedicasonline'; // required: replace example with your forum shortname
 

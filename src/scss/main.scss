@@ -268,7 +268,7 @@ td {
 	margin: 0 auto;
 }
 
-.container:after {
+.container {
 	@include clearfix;
 }
 
@@ -417,10 +417,7 @@ header {
 	margin-bottom: 30px;
 	background: $color-secondary;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); //0px 3px 3px rgba(0, 0, 0, 0.1)
-
-	:after, nav:after  {
-		@include clearfix;
-	}
+	@include clearfix;
 
 	// = logo
 
@@ -681,19 +678,70 @@ header .facebook:active {
 // --------------------------------------------------
 
 main {
+	@include clearfix;
+
 	img {
 		background: #fff url(#{$path-img}/loading.gif) center center no-repeat;
 		transition: all 0.2s;
 	}
 }
 
-main:after {
-	@include clearfix;
-}
-
 //
 // =home
 // --------------------------------------------------
+
+.home {
+	background: #fff;
+}
+
+.marketing {
+	padding: 80px 0 80px 0;
+	background: #fff;
+
+	.advantages {
+		display: flex;
+		flex-flow: row wrap;
+	}
+
+	.advantage {
+		width: 50%;
+		padding: 0 20px 40px 0;
+	}
+
+	i {
+		float: left;
+		margin-right: 20px;
+		font-size: 50px;
+		color: #00c1e3;
+	}
+
+	h2, h3 {
+		text-align: center;
+	}
+
+	h2 {
+		margin-bottom: 0;
+		font-weight: bold;
+		font-size: 36px;
+	}
+
+	h3 {
+		margin-bottom: 60px;
+	}
+
+	h4, p {
+		overflow: hidden;
+	}
+
+	h4 {
+		margin-bottom: 5px;
+		font-weight: bold;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+}
 
 .home {
 
@@ -823,16 +871,14 @@ main:after {
 
 .news {
 	padding: 40px 0;
+	@include clearfix;
 
-	:after {
-		@include clearfix;
+	.container {
+		display: flex;
 	}
 
 	.new {
-		overflow: hidden;
-		display: block;
-		width: calc(33.333% - 20px);
-		float: left;
+		flex-grow: 1;
 		margin-right: 30px;
 		border: 1px solid #ddd;
 		border-radius: 2px;
@@ -889,27 +935,29 @@ main:after {
 // =plans
 
 .plans {
+
 	background: #232937 url('https://s3.amazonaws.com/www1.bigcommerce.com/assets/herobanners/ent-overview.jpg');
 	padding: 90px 0;
-}
 
-.plans {
+	.container {
+		display: flex;
+	}
+
 	.plan {
-		float: left;
-		width: calc(33.333% - 20px);
+		flex-grow: 1;
 		margin-right: 30px;
 		background: #f7f8f9;
 		text-align: center;
 		transition: all .2s;
 	}
 
+	.plan:last-child {
+		margin-right: 0;
+	}
+
 	.plan:hover {
 		transform: scale(1.02);
 		cursor: default;
-	}
-
-	.plan:last-child {
-		margin-right: 0;
 	}
 
 	.plan-title {
@@ -972,7 +1020,7 @@ main:after {
 }
 
 
-#ajax-container:after {
+#ajax-container {
 	@include clearfix;
 }
 
@@ -1014,6 +1062,11 @@ main:after {
 #stores {
 	margin: 0 0 30px -10px;
 	padding: 0 15px;
+}
+
+.stores {
+	display: flex;
+	flex-flow: row wrap;
 }
 
 .store-link {
@@ -1198,7 +1251,7 @@ main:after {
 		list-style: none;
 	}
 
-	.tab:after {
+	.tab {
 		@include clearfix;
 	}
 
@@ -1394,6 +1447,10 @@ main:after {
 	h4 span {
 		color: $color-primary;
 	}
+
+	.pagination {
+		margin-bottom: 30px;
+	}
 }
 
 .search-link {
@@ -1412,7 +1469,7 @@ main:after {
 	color: #666;
 }
 
-#search-result:after {
+#search-result {
 	@include clearfix;
 }
 
@@ -1662,13 +1719,15 @@ main:after {
 
 footer {
 	display: none;
-	min-height: 200px;
-	background: #424d55;
-	color: #ccc;
+	border-top: 1px solid #ddd;
 
 	.container {
 		padding: 30px 0;
 	}
+}
+
+.home footer {
+	display: block;
 }
 
 //
