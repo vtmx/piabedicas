@@ -19,22 +19,53 @@
 
 	// Custom Admin Style
 	function custom_admin_css() {
+		echo
+		'<style>
+			/* Adjust price ACF media field */
+			.media-sidebar .acf-input-prepend {
+				padding: 13px 7px;
+				line-height: 0;
+			}
+		</style>';
+
 		if (current_user_can('author')) {
 			echo
 				'<style>
+					/* Hide Elements */
+
+					/* Sidebar */
 					#adminmenu, #adminmenuback, #adminmenuwrap {
 						display: none;
 					}
 
-					.folded #wpcontent {
-						margin-left: 0;
-					}
-					#wpcontent {
-						padding-left: 15px
+					/* Options and help */
+					#screen-meta, #screen-meta-links {
+					   display: none;
+				   	}
+
+					/* Add new store button */
+					.page-title-action {
+						display: none;
 					}
 
-					// Remove Cover Image
-					#postbox-container-2 {
+					/* Text editor toolbar */
+					.quicktags-toolbar {
+						display: none;
+					}
+
+					/* Version footer */
+					#footer-upgrade {
+							display: none;
+					}
+
+					/* Customize */
+					.folded #wpcontent, .folded #wpfooter {
+						margin-left: 0;
+						padding-left: 15px;
+					}
+
+					/* Hide alt att media field */
+					.setting[data-setting="alt"] {
 						display: none;
 					}
 				</style>';
@@ -53,31 +84,33 @@
 	}
 	add_action('admin_footer', 'custom_admin_js');
 
-	// Remove admin bar inks
-	function remove_admin_bar_links() {
-		if (current_user_can('author')) {
+	// Custom interface if Author user
+	if (current_user_can('author')) {
+
+		function remove_admin_bar_links() {
 			global $wp_admin_bar;
 			$wp_admin_bar->remove_menu('about');            // Remove the about WordPress link
 			$wp_admin_bar->remove_menu('comments');         // Remove the comments link
+			$wp_admin_bar->remove_menu('dashboard');        // Remove the site name menu
 			$wp_admin_bar->remove_menu('documentation');    // Remove the WordPress documentation link
 			$wp_admin_bar->remove_menu('feedback');         // Remove the feedback link
 			$wp_admin_bar->remove_menu('new-content');      // Remove the content link
+			$wp_admin_bar->remove_menu('site-name');       // Remove the site name menu
 			$wp_admin_bar->remove_menu('support-forums');   // Remove the support forums link
 			$wp_admin_bar->remove_menu('updates');          // Remove the updates link
+			$wp_admin_bar->remove_menu('view-site');        // Remove the view site link
 			$wp_admin_bar->remove_menu('wporg');            // Remove the WordPress.org link
 			$wp_admin_bar->remove_menu('wp-logo');          // Remove the WordPress logo
 			$wp_admin_bar->remove_menu('w3tc');             // If you use w3 total cache remove the performance link
-			// $wp_admin_bar->remove_menu('my-account');       // Remove the user details tab
-			// $wp_admin_bar->remove_menu('site-name');        // Remove the site name menu
-			// $wp_admin_bar->remove_menu('view');             // If you use w3 total cache remove the performance link
-			// $wp_admin_bar->remove_menu('view-site');        // Remove the view site link
+			// $wp_admin_bar->remove_menu('my-account');    // Remove the user details tab
+			// $wp_admin_bar->remove_menu('view');          // If you use w3 total cache remove the performance link
 		}
-	}
-	add_action('wp_before_admin_bar_render', 'remove_admin_bar_links');
 
-	// Remove front metabox if the user isn't the admin user
-	function disable_dashboard_elements() {
-		if (current_user_can('author')) {
+		add_action('wp_before_admin_bar_render', 'remove_admin_bar_links');
+
+
+		function disable_dashboard_metabox() {
+
 			// Dashboard metabox
 			remove_meta_box('dashboard_activity', 'dashboard', 'core');
 			remove_meta_box('dashboard_right_now', 'dashboard', 'core');
@@ -89,8 +122,10 @@
 			remove_meta_box('dashboard_gravfx_feed', 'dashboard', 'core');
 			remove_meta_box('dashboard_primary', 'dashboard', 'side');
 			remove_meta_box('dashboard_secondary', 'dashboard', 'side');
-			remove_meta_box('slugdiv', 'comercio', 'normal');
+			remove_meta_box('authordiv', 'comercio', 'normal');
+			remove_meta_box('commentsdiv', 'comercio', 'normal');
 			remove_meta_box('commentstatusdiv', 'comercio', 'normal');
+			remove_meta_box('slugdiv', 'comercio', 'normal');
 
 			// Menu
 			remove_menu_page('index.php');                   // Dashboard
@@ -109,14 +144,32 @@
 			remove_submenu_page('edit.php?post_type=comercio', 'edit.php?post_type=comercio');     // Submenu All Stores
 			remove_submenu_page('edit.php?post_type=comercio', 'post-new.php?post_type=comercio'); // Submenu New Store
 		}
+
+		add_action('admin_menu', 'disable_dashboard_metabox');
+
+
+		// Add new dashboard widgets
+		function piabedias_add_dashboard_widgets() {
+			wp_add_dashboard_widget( 'piabedias_dashboard_welcome_widget', 'Bem Vindo', 'piabedias_add_welcome_widget' );
+		}
+		function piabedias_add_welcome_widget() {
+			echo 'Links necessários para a manutenção do site:';
+			echo
+			'<ul>
+		        <li><a href="/piabedicas/wp-admin/edit.php?post_type=comercio">Página de comércios</a></li>
+		    </ul>';
+		}
+		add_action( 'wp_dashboard_setup', 'piabedias_add_dashboard_widgets' );
 	}
-	add_action('admin_menu', 'disable_dashboard_elements');
+
 
 	// Theme support
+	add_theme_support('custom-background');
+	add_theme_support('custom-header');
+	add_theme_support('html5', array('caption', 'comment-list', 'comment-form', 'gallery', 'search-form'));
 	add_theme_support('menus');
 	add_theme_support('post-formats');
 	add_theme_support('post-thumbnails');
-	add_theme_support('html5', array('caption', 'comment-list', 'comment-form', 'gallery', 'search-form' ) );
 
 	// Style editor
 	remove_filter('the_content', 'wpautop');

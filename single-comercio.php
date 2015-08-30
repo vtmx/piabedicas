@@ -35,7 +35,10 @@
 				<?php if ( get_field('store-address') ): ?>
 				<tr>
 					<th class="address">Endereço: </th>
-					<td><?php the_field('store-address'); ?>, Piabetá, Magé, RJ - <a class="lightbox-map" href="http://maps.google.com/maps?q=<?php the_field('store-address'); ?>,+Piabtetá,+Magé,+RJ">Mapa <i class="fa fa-map-marker"></i></a></td>
+					<td>
+						<?php the_field('store-address'); ?>, Piabetá, Magé, RJ -
+						<a class="lightbox-map" href="http://maps.google.com/maps?q=<?php the_field('store-address'); ?>,+Piabtetá,+Magé,+RJ">Mapa <i class="fa fa-map-marker"></i></a>
+					</td>
 				</tr>
 				<?php endif; ?>
 
@@ -83,45 +86,66 @@
 					<?php endwhile; ?>
 				<?php endif; ?>
 			</table>
-
 		</div><!-- .store-info -->
 	</div><!-- .store-details -->
 
+	<?php // If section 1 isn't exist, don't show the elements below ?>
+	<?php if ( get_field('store-section1-title') ) : ?>
+		<div class="store-pages">
+			<ul class="tab">
+				<?php for ( $c = 1; $c <= 5; $c++ ) : ?>
+					<?php if ( get_field('store-section'.$c.'-title') ) : ?>
+						<li><a href="#section-<?php echo $c; ?>"><?php the_field( 'store-section'.$c.'-title' ); ?></a></li>
+					<?php endif; ?>
+				<?php endfor; ?>
+			</ul>
 
-	<div class="store-pages">
-		<ul class="tab">
-			<li class="active"><a href="#section-1" data-toggle="tab"><?php the_field( 'store-section1-title' ); ?></a></li>
-			<?php for ( $c = 2; $c <= 5; $c++ ) { ?>
-				<?php if ( get_field('store-section'.$c.'-title') ) { ?>
-					<li><a href="#section-<?php echo $c; ?>"><?php the_field( 'store-section'.$c.'-title' ); ?></a></li>
-				<?php } ?>
-			<?php } ?>
-		</ul>
+			<div class="tab-content">
+				<?php for ( $c = 1; $c <= 5; $c++ ) : ?>
 
-		<div class="tab-content">
-			<section id="section-1" class="section active animation fade-in">
-				<?php the_field( 'store-section1-content' ); ?>
-			</section>
-			<?php for ( $c = 2; $c <= 5; $c++ ) { ?>
-				<?php if ( get_field('store-section'.$c.'-content') ) { ?>
-					<section id="section-<?php echo $c; ?>" class="animation fade-in">
-						<?php the_field( 'store-section'.$c.'-content' ); ?>
-					</section>
-				<?php } ?>
-			<?php } ?>
-		</div>
+					<?php if( have_rows('store-section'.$c.'-content') ) : ?>
+						<section id="section-<?php echo $c; ?>" class="animation fade-in">
 
-	</div><!-- #store-pages -->
+						    <?php while ( have_rows('store-section'.$c.'-content') ) : the_row(); ?>
+						        <?php if( get_row_layout() == 'text' ): ?>
+						        	<?php the_sub_field('wysiwyg'); ?>
+								<?php elseif( get_row_layout() == 'products' ): ?>
+									<div class="products">
+
+										<?php $images = get_sub_field('gallery'); ?>
+										<?php if( $images ): ?>
+										    <?php foreach( $images as $image ): ?>
+										        <a class="product lightbox-iframe" href="<?php echo get_attachment_link($image['ID']); ?>">
+										            <img src="<?php echo $image['sizes']['thumbnail']; ?>" alt="<?php echo $image['alt']; ?>">
+													<p class="title"><?php echo $image['caption']; ?></p>
+														<p class="price"><span>R$ </span><?php the_field('store-product-price', $image['ID']); ?></p>
+										        </a>
+										    <?php endforeach; ?>
+										<?php endif; ?>
+
+									</div>
+						        <?php endif; ?>
+						    <?php endwhile; ?>
+
+						</section>
+					<?php endif; ?>
+
+				<?php endfor; ?>
+			</div><!-- .tab-content -->
+
+		</div><!-- #store-pages -->
+	<?php endif; ?>
+
 </div><!-- .store-wrap -->
 
 <?php
-	//Get array of terms
+	// Get array of terms
 	$terms = get_the_terms( $post->ID , 'comercio-categoria', 'string');
-	//Pluck out the IDs to get an array of IDS
+	// Pluck out the IDs to get an array of IDS
 	$term_ids = wp_list_pluck( $terms, 'term_id' );
 
-	//Query posts with tax_query. Choose in 'IN' if want to query posts with any of the terms
-	//Chose 'AND' if you want to query for posts with all terms
+	// Query posts with tax_query. Choose in 'IN' if want to query posts with any of the terms
+	// Chose 'AND' if you want to query for posts with all terms
 	$second_query = new WP_Query( array(
 	'post_type' => 'comercio',
 	'tax_query' => array(
@@ -161,22 +185,24 @@
 
 <?php } ?>
 
-<div class="container">
-	<div class="comments">
-		<div id="disqus_thread"></div>
-		<script>
-			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-			var disqus_shortname = 'piabedicasonline'; // required: replace example with your forum shortname
+<?php if ( get_field('store-section1-title') ) : ?>
+	<div class="container">
+		<div class="comments">
+			<div id="disqus_thread"></div>
+			<script>
+				/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+				var disqus_shortname = 'piabedicasonline'; // required: replace example with your forum shortname
 
-			/* * * DON'T EDIT BELOW THIS LINE * * */
-			(function() {
-				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			})();
-		</script>
-		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				/* * * DON'T EDIT BELOW THIS LINE * * */
+				(function() {
+					var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+					dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+					(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				})();
+			</script>
+			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		</div>
 	</div><!-- #comments -->
-</div>
+<?php endif; ?>
 
 <?php get_template_part( 'footer' ); ?>

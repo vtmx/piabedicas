@@ -35,11 +35,11 @@ Este e-mail foi enviado do site Piabedicas (http://piabedicas.com.br)
 </label>
 
 <label>
-  Funcionamento [text production placeholder "Seg a Sexta de 9h às 18h"]
+  Telefone(s) [text* phone placeholder "(21) 2739-1393"]
 </label>
 
 <label>
-  Telefone(s) [text* phone placeholder "(21) 2739-1393"]
+  Funcionamento [text production placeholder "Seg a Sexta de 9h às 18h"]
 </label>
 
 <label>
@@ -59,7 +59,9 @@ Este e-mail foi enviado do site Piabedicas (http://piabedicas.com.br)
 </label>
 
 <label>
-  Plano [select plan "Básico" "Avançado"]
+  Logo do comércio
+  <br>
+  [file logo]
 </label>
 
 [submit "Enviar"]

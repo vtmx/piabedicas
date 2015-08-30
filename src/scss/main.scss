@@ -8,7 +8,7 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
 
 body {
 	background-color: #f7f8f9;
-	font: 15px/1.6 sans-serif;
+	font: 14px/1.6 'open sans', sans-serif;
 	color: #444;
 }
 
@@ -331,10 +331,6 @@ td {
 	margin-right: 0;
 }
 
-.gallery .gallery-caption {
-	display: none;
-}
-
 //
 // =Helper classes
 // --------------------------------------------------
@@ -475,6 +471,7 @@ nav {
 
 .menu {
 	float: left;
+	font-size: 13px;
 }
 
 .menu > li {
@@ -499,7 +496,6 @@ nav {
 .menu > li > a {
 	display: block;
 	padding: 19px 20px 18px 20px;
-	font-size: 13px;
 	font-weight: bold;
 	color: #b1bccd;
 }
@@ -698,14 +694,10 @@ main {
 	padding: 80px 0 80px 0;
 	background: #fff;
 
-	.advantages {
-		display: flex;
-		flex-flow: row wrap;
-	}
-
 	.advantage {
+		float: left;
 		width: 50%;
-		padding: 0 20px 40px 0;
+		padding: 20px 10px;
 	}
 
 	i {
@@ -873,12 +865,10 @@ main {
 	padding: 40px 0;
 	@include clearfix;
 
-	.container {
-		display: flex;
-	}
-
 	.new {
-		flex-grow: 1;
+		display: block;
+		float: left;
+		width: 30%;
 		margin-right: 30px;
 		border: 1px solid #ddd;
 		border-radius: 2px;
@@ -904,8 +894,8 @@ main {
 
 	img {
 		display: block;
-		width: 413px;
-		height: 167px;
+		width: 300px;
+		height: 150px;
 		margin-bottom: 15px;
 		background: #fff url(#{$path-img}/loading.gif) no-repeat center center;
 	}
@@ -932,27 +922,40 @@ main {
    }
 }
 
+
+//=objective
+.objective {
+	padding: 80px 0;
+	background: #00abc9;
+	text-align: center;
+	color: #fff;
+
+	h2 {
+    	font-size: 36px;
+		font-weight: 300;
+	}
+
+	p {
+		margin-bottom: 0;
+		font-size: 18px;
+	}
+}
+
+
 // =plans
 
 .plans {
 
-	background: #232937 url('https://s3.amazonaws.com/www1.bigcommerce.com/assets/herobanners/ent-overview.jpg');
+	background: #232937 url('https://s3.amazonaws.com/www1.bigcommerce.com/assets/herobanners/ent-overview.jpg') no-repeat center center;
+	background-size: cover;
 	padding: 90px 0;
 
-	.container {
-		display: flex;
-	}
-
 	.plan {
-		flex-grow: 1;
-		margin-right: 30px;
+		max-width: 450px;
+		margin: 0 auto;
 		background: #f7f8f9;
 		text-align: center;
 		transition: all .2s;
-	}
-
-	.plan:last-child {
-		margin-right: 0;
 	}
 
 	.plan:hover {
@@ -976,7 +979,7 @@ main {
 
 	.price {
 		margin-bottom: 10px;
-		padding: 20px 0 20px 4%;
+		padding: 20px 0;
 		border-bottom: 1px solid #e9e9e9;
 		background: #fafafa;
 		font-size: 60px;
@@ -1028,6 +1031,7 @@ main {
 	margin-bottom: 30px;
 	border-bottom: 1px solid #ddd;
 	background: #fff;
+	font-size: 13px;
 	list-style: none;
 
 	ul {
@@ -1119,7 +1123,7 @@ main {
 	overflow: hidden;
 	margin: 0;
 	border-radius: 0 0 5px 5px;
-	font-size: 14px;
+	font-size: 13px;
 	text-align: center;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -1337,6 +1341,59 @@ main {
 	}
 }
 
+// =products
+
+.products {
+
+	text-align: center;
+
+	.product {
+		float: left;
+		display: block;
+		width: 200px;
+		margin-right: 20px;
+		color: #444;
+	}
+
+	.product:hover, .product:focus {
+		opacity: .8;
+	}
+
+	.product:active {
+		opacity: 1;
+	}
+
+	img {
+		display: block;
+		width: 200px;
+		height: 200px;
+		margin-bottom: 5px;
+	}
+
+	p {
+		margin-bottom: 3px;
+	}
+
+	.price {
+		color: $color-primary;
+		font-size: 18px;
+		font-weight: 600;
+	}
+}
+
+.single-attachment {
+	.product-image {
+		float: left;
+		width: 55%;
+		padding-right: 3%;
+	}
+
+	.product-info {
+		float: left;
+		width: 40%;
+	}
+}
+
 // =comments
 
 .single-comercio .stores-related, .single-comercio .comments {
@@ -1467,6 +1524,10 @@ main {
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 	line-height: 20px;
 	color: #666;
+
+	p {
+		margin-bottom: 0;
+	}
 }
 
 #search-result {
@@ -1650,13 +1711,8 @@ main {
 // =contact
 // --------------------------------------------------
 
-.page-template-page-contato, .page-template-page-cadastro {
+.page-template-page-contato,  {
 	background: #fff;
-
-	header, footer {
-		display: none;
-	}
-
 	p {
 		margin: 0;
 	}
@@ -1668,6 +1724,10 @@ main {
 	label {
 		margin-bottom: 10px;
 	}
+}
+
+.page-template-page-cadastro label:last-of-type {
+	margin-bottom: 20px;
 }
 
 .wpcf7-display-none, .screen-reader-response {
@@ -1720,9 +1780,10 @@ main {
 footer {
 	display: none;
 	border-top: 1px solid #ddd;
+	background: #fff;
 
 	.container {
-		padding: 30px 0;
+		padding: 20px 0;
 	}
 }
 
@@ -1764,6 +1825,14 @@ footer {
 //
 // =media
 // --------------------------------------------------
+
+@media (min-width: 500px) {
+	.page-template-page-contato, .page-template-page-cadastro, .single-attachment {
+		header, footer {
+			display: none;
+		}
+	}
+}
 
 @media(max-width: 1020px) {
 
@@ -1857,11 +1926,6 @@ footer {
 
 	.plans {
 		padding: 40px 0;
-
-		.plan {
-			width: calc(33.333% - 10px);
-			margin-right: 15px;
-		}
 
 		.btn {
 			padding: 10px;

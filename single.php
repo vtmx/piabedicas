@@ -1,7 +1,6 @@
 <?php get_template_part( 'header' ); ?>
 
 <div class="container">
-
 	<div class="page-content">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<article class="post">

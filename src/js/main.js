@@ -117,21 +117,17 @@ $(function(){
 		$('#ajax-container').addClass('fade-out');
 
 		// ajax loaded
-		$('#stores').load( url, function(){
+		$('#stores').load( url, function() {
 			$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
 			$('#ajax-container').addClass('fade-in');
 		});
 	}); // click
 
 	// store category active
-	$('.store-categories a').click( function(){
+	$('.store-categories a').click( function() {
 		$('.store-categories li').removeClass('active current-cat');
 		$(this).parent().addClass('current-cat');
 	});
-
-
-
-
 
 
 	/* Search
@@ -152,17 +148,11 @@ $(function(){
 		$('#ajax-container').addClass('fade-out');
 
 		// ajax loaded
-		$('.search #content').load( url, function(){
+		$('.search #content').load( url, function() {
 			$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
 			$('#ajax-container').addClass('fade-in');
 		});
 	}); // click
-
-
-
-
-
-
 
 
 	/* Lightbox
@@ -192,7 +182,7 @@ $(function(){
 	});
 
 	// fancybox contact
-	$('.lightbox-contact').fancybox({
+	$('.lightbox-iframe').fancybox({
 		'type': 'iframe',
 		maxWidth: 600
 		//'scrolling': 'no',
@@ -203,6 +193,10 @@ $(function(){
 
 	/* Tab
 	---------------------------------------------------------------------------*/
+
+	// Add class active first tab and section
+	$('.store-pages li:first-child').addClass('active');
+	$('.tab-content section:first-child').addClass('active');
 
 	$('.store-pages .tab a').click( function(e){
 		// remove mouse effect

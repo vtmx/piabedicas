@@ -37,7 +37,7 @@
 				<div class="advantage">
 					<i class="fa fa-globe"></i>
 					<h4>Internet</h4>
-					<p>Testando módulo social, escrevendo um pouco para que não feique nada saturado.</p>
+					<p>Hoje a Web é o meio mais prático do seu cliente encontrar você.</p>
 				</div>
 
 				<div class="advantage">
@@ -55,34 +55,34 @@
 				<div class="advantage">
 					<i class="fa fa-money"></i>
 					<h4>Economize</h4>
-					<p>Testando módulo social, escrevendo um pouco para que não feique nada saturado.</p>
+					<p>Por um pequeno valor você irá divulgar seu próprio link piabedicas.</p>
 				</div>
 			</div>
+		</div>
+	</section>
+
+	<section class="objective">
+		<div class="container">
+			<h2>Nosso objetivo</h2>
+			<p>
+				O objetivo do Piabedicas é oferecer um serviço de divulgação do comércio local de Piabetá a um preço acessível.
+				<br>
+				Onde os comerciantes possam anunciar seus produtos e serviços de forma rápida e prática.
+			</p>
 		</div>
 	</section>
 
 	<section class="plans">
 		<div class="container">
 			<div class="plan">
-				<h2 class="plan-title">Básico</h2>
-				<div class="price"><span>R$</span>40<span>/mês</span></div>
+				<h2 class="plan-title">Pré-Cadastro</h2>
+				<div class="price"><span>R$</span>30<span>/mês</span></div>
 				<ul>
-					<li><strong>10</strong> projects</li>
-					<li><strong>10GB</strong> amount of space</li>
-					<li><strong>5</strong> e-mail accounts</li>
+					<li>Atualizações feitas pelo comerciante</li>
+					<li>Feedbacks dos usuários sobre seu serviço</li>
+					<li>Link personalizado Piabedicas</li>
 				</ul>
-				<a href='#' class='btn'>Pré-Cadastro</a>
-			</div>
-
-			<div class="plan">
-				<h2 class="plan-title">Avançado</h2>
-				<div class="price"><span>R$</span>50<span>/mês</span></div>
-				<ul>
-					<li><strong>1</strong> slider durante uma semana</li>
-					<li><strong>10GB</strong> amount of space</li>
-					<li><strong>5</strong> e-mail accounts</li>
-				</ul>
-				<a href='#' class='btn'>Pré-Cadastro</a>
+				<a href="http://localhost/piabedicas/cadastro/" class='btn lightbox-iframe'>Pré-Cadastro</a>
 			</div>
 		</div>
 	</section>
