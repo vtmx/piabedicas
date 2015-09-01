@@ -304,12 +304,8 @@
 
 .fancybox-close, .fancybox-prev span, .fancybox-next span {
 	background: #fff url(#{$path-img}/fancybox.png);
-	-webkit-border-radius: 3px;
-	-webkit-transition: none;
-	   -moz-transition: none;
-	    -ms-transition: none;
-	     -o-transition: none;
-	        transition: none;
+	border-radius: 3px;
+    transition: none;
 }
 
 #fancybox-loading {
@@ -484,9 +480,7 @@
 	padding: 2px 20px;
 	background: transparent; /* Fallback for web browsers that doesn"t support RGBa */
 	background: rgba(0, 0, 0, .8);
-	-webkit-border-radius: 15px;
-	   -moz-border-radius: 15px;
-	        border-radius: 15px;
+    border-radius: 15px;
 	text-shadow: 0 1px 2px #222;
 	color: #FFF;
 	font-weight: bold;

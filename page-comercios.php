@@ -14,10 +14,34 @@
 	<div id="stores" class="animation fade-in">
 		<div id="ajax-container" class="animation">
 
+			<?php
+
+
+
+			// WP_Query arguments
+			$args = array (
+				'post_type'              => 'comercio',
+				'orderby'                => 'rand',
+				'pagination'             => true,
+				'paged'                  => get_query_var('paged'),
+				'posts_per_page'         => '6'
+			);
+
+
+
+
+
+
+
+
+			// The Query
+			$query = new WP_Query( $args );
+			?>
+
 			<div class="stores">
-				<?php $query = new WP_Query(array( 'post_type' => 'comercio', 'orderby' => 'ID', 'posts_per_page' => 6, 'paged' => get_query_var('paged') )); while ( $query->have_posts() ) : $query->the_post(); ?>
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 					<a class="store-link animation" href="<?php the_permalink(); ?>">
-						<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'full', 'class' => 'store-thumb' ) ); ?>
+						<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'thumb', 'class' => 'store-thumb' ) ); ?>
 						<h2 class="store-name"><?php the_title(); ?></h2>
 					</a>
 				<?php endwhile; ?>

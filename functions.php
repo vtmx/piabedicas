@@ -22,7 +22,7 @@
 		echo
 		'<style>
 			/* Adjust price ACF media field */
-			.media-sidebar .acf-input-prepend {
+			.media-sidebar .acf-input-prepend, .media-modal .acf-input-prepend {
 				padding: 13px 7px;
 				line-height: 0;
 			}
@@ -55,7 +55,7 @@
 
 					/* Version footer */
 					#footer-upgrade {
-							display: none;
+						display: none;
 					}
 
 					/* Customize */
@@ -64,8 +64,14 @@
 						padding-left: 15px;
 					}
 
-					/* Hide alt att media field */
-					.setting[data-setting="alt"] {
+					/* Hide fields media */
+					.setting[data-setting="alt"]/*, .setting[data-setting="caption"]*/ {
+						display: none;
+					}
+
+					/* Hide fields products */
+					.layout[data-layout="products"] .acf-field[data-name="alt"],
+					.layout[data-layout="products"] .acf-field[data-name="caption"] {
 						display: none;
 					}
 				</style>';

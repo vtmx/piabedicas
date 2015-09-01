@@ -13,18 +13,42 @@
 <div class="container">
 	<div id="stores" class="animation fade-in">
 		<div id="ajax-container" class="animation">
-			
+
+			<?php
+			// A Paginação é influênciada pelo Admin do Wordpress deixar 6
+			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+			// WP_Query arguments
+			$args = array (
+				'post_type'              => 'comercio',
+				'orderby'                => 'rand',
+				'pagination'             => true,
+				'paged'                  => get_query_var('paged'),
+				'posts_per_page'         => '6',
+				'tax_query' => array(
+                array(
+	                    'taxonomy' => 'comercio-categoria',
+	                    'field' => 'slug',
+	                    'terms' => $term->slug
+	                )
+	            ),
+			);
+
+			// The Query
+			$query = new WP_Query( $args );
+			?>
+
 			<div class="stores">
-				<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
-					<a class="store-link" href="<?php the_permalink(); ?>">
-						<?php the_post_thumbnail('thumbnail', array('size' => 'full', 'class' => 'store-thumb')); ?>
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					<a class="store-link animation" href="<?php the_permalink(); ?>">
+						<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'thumb', 'class' => 'store-thumb' ) ); ?>
 						<h2 class="store-name"><?php the_title(); ?></h2>
 					</a>
 				<?php endwhile; ?>
 			</div>
 
 			<?php if( function_exists('wp_pagenavi') ) : ?>
-				<div class="pagination"><?php wp_pagenavi(); ?></div>
+				<div class="pagination"><?php wp_pagenavi( array('query' => $query) ); ?></div>
 			<?php endif; ?>
 		</div>
 	</div>

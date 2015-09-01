@@ -96,7 +96,6 @@ $(function(){
 	});
 
 
-
 	/* Store Ajax Pagination
 	---------------------------------------------------------------------------*/
 
@@ -155,6 +154,25 @@ $(function(){
 	}); // click
 
 
+	/* Tab
+	---------------------------------------------------------------------------*/
+
+	// Add class active first tab and section
+	$('.store-pages li:first-child').addClass('active');
+	$('.tab-content section:first-child').addClass('active');
+
+	$('.store-pages .tab a').click( function(e){
+		// remove mouse effect
+		e.preventDefault();
+
+		// add active this and remove all li if have active
+		$(this).parent('li').addClass('active').siblings().removeClass('active');;
+
+		// add active section == href and hide others
+		$('.tab-content ' + $(this).attr('href')).show().siblings().hide();
+	});
+
+
 	/* Lightbox
 	---------------------------------------------------------------------------*/
 
@@ -189,24 +207,13 @@ $(function(){
 		//'iframe': {'scrolling': 'no'}
 	});
 
+	// add rel group product
+	$('.products .product').attr('rel' , 'group');
 
-
-	/* Tab
-	---------------------------------------------------------------------------*/
-
-	// Add class active first tab and section
-	$('.store-pages li:first-child').addClass('active');
-	$('.tab-content section:first-child').addClass('active');
-
-	$('.store-pages .tab a').click( function(e){
-		// remove mouse effect
-		e.preventDefault();
-
-		// add active this and remove all li if have active
-		$(this).parent('li').addClass('active').siblings().removeClass('active');;
-
-		// add active section == href and hide others
-		$('.tab-content ' + $(this).attr('href')).show().siblings().hide();
+	// fancybox product
+	$('.lightbox-iframe-product').fancybox({
+		'type': 'iframe',
+		width: 940
 	});
 
 

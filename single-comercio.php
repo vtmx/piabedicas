@@ -90,10 +90,10 @@
 	</div><!-- .store-details -->
 
 	<?php // If section 1 isn't exist, don't show the elements below ?>
-	<?php if ( get_field('store-section1-title') ) : ?>
+	<?php if ( get_field('store-section1-title') ): ?>
 		<div class="store-pages">
 			<ul class="tab">
-				<?php for ( $c = 1; $c <= 5; $c++ ) : ?>
+				<?php for ( $c = 1; $c <= 5; $c++ ): ?>
 					<?php if ( get_field('store-section'.$c.'-title') ) : ?>
 						<li><a href="#section-<?php echo $c; ?>"><?php the_field( 'store-section'.$c.'-title' ); ?></a></li>
 					<?php endif; ?>
@@ -115,10 +115,12 @@
 										<?php $images = get_sub_field('gallery'); ?>
 										<?php if( $images ): ?>
 										    <?php foreach( $images as $image ): ?>
-										        <a class="product lightbox-iframe" href="<?php echo get_attachment_link($image['ID']); ?>">
+										        <a class="product lightbox-iframe-product" href="<?php echo get_attachment_link($image['ID']); ?>">
 										            <img src="<?php echo $image['sizes']['thumbnail']; ?>" alt="<?php echo $image['alt']; ?>">
-													<p class="title"><?php echo $image['caption']; ?></p>
+													<p class="title"><?php echo $image['title']; ?></p>
+													<?php if ( get_field('store-product-price') ): ?>
 														<p class="price"><span>R$ </span><?php the_field('store-product-price', $image['ID']); ?></p>
+													<?php endif; ?>
 										        </a>
 										    <?php endforeach; ?>
 										<?php endif; ?>
