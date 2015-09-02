@@ -7,9 +7,8 @@
 		<?php endwhile; ?>
 	</div>
 
-	<aside class="page-aside vcard">
-		<p class="email"><span>E-mail</span>piabedicas@gmail.com</p>
-		<p class="tel"><span>Telefone</span>(21) 9459-7383</p>
+	<aside class="page-aside">
+		<?php dynamic_sidebar('sidebar-blog'); ?>
 	</aside>
 </div>
 

@@ -344,7 +344,7 @@ $(function(){
 	---------------------------------------------------------------------------*/
 
 	// Add class active first tab and section
-	$('.store-pages li:first-child').addClass('active');
+	$('.store-pages .tab li:first-child').addClass('active');
 	$('.tab-content section:first-child').addClass('active');
 
 	$('.store-pages .tab a').click( function(e){

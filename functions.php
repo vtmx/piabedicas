@@ -2,7 +2,7 @@
 	// Change login logo
 	function custom_login_logo() {
 		echo
-		'<style>
+		"<style>
 			.login h1 {
 				margin-bottom: 10px;
 			}
@@ -13,24 +13,46 @@
 				margin: 0 auto;
 				background: url(wp-content/themes/piabedicas/img/wp-logo-admin.png) no-repeat !important;
 			}
-		</style>';
+		</style>";
 	}
 	add_action('login_head', 'custom_login_logo');
 
 	// Custom Admin Style
 	function custom_admin_css() {
 		echo
-		'<style>
+		"<style>
 			/* Adjust price ACF media field */
 			.media-sidebar .acf-input-prepend, .media-modal .acf-input-prepend {
 				padding: 13px 7px;
 				line-height: 0;
 			}
-		</style>';
+
+			/* Remove more button of editor */
+			.quicktags-toolbar {
+				display: none;
+			}
+
+			/* Add style editor ACF */
+			.wp-editor-area {
+				margin-top: 0 !important;
+				padding: 10px !important;
+				font-family: 'open sans', sans-serif !important;
+				font-size: 14px !important;
+				box-shadow: inset 0 1px 2px rgba(0,0,0,.07) !important;
+			}
+
+			.acf-gallery-attachments {
+				box-shadow: inset 0 1px 2px rgba(0,0,0,.07) !important;
+			}
+
+			.acf-field-wysiwyg .acf-label, .acf-field-gallery .acf-label {
+				display: none !important;
+			}
+		</style>";
 
 		if (current_user_can('author')) {
 			echo
-				'<style>
+				"<style>
 					/* Hide Elements */
 
 					/* Sidebar */
@@ -65,16 +87,16 @@
 					}
 
 					/* Hide fields media */
-					.setting[data-setting="alt"]/*, .setting[data-setting="caption"]*/ {
+					.setting[data-setting='alt']/*, .setting[data-setting='caption']*/ {
 						display: none;
 					}
 
 					/* Hide fields products */
-					.layout[data-layout="products"] .acf-field[data-name="alt"],
-					.layout[data-layout="products"] .acf-field[data-name="caption"] {
+					.layout[data-layout='products'] .acf-field[data-name='alt'],
+					.layout[data-layout='products'] .acf-field[data-name='caption'] {
 						display: none;
 					}
-				</style>';
+				</style>";
 		}
 	}
 	add_action('admin_head', 'custom_admin_css');
@@ -168,7 +190,6 @@
 		add_action( 'wp_dashboard_setup', 'piabedias_add_dashboard_widgets' );
 	}
 
-
 	// Theme support
 	add_theme_support('custom-background');
 	add_theme_support('custom-header');
@@ -185,6 +206,10 @@
 	remove_filter('acf_the_content', 'wpautop');
 	remove_filter('acf_the_content', 'wptexturize');
 
+	// Use text editor by default
+	add_filter('wp_default_editor', create_function('', 'return "html";'));
+	//add_filter('user_can_richedit', create_function('' , 'return false;') , 50);
+
 	// Remove style of gallery
 	add_filter('use_default_gallery_style', '__return_false');
 
@@ -194,10 +219,10 @@
 	add_filter('acf_the_content', 'Markdown');
 
 	// Change Footer Description
-	function pd_description() {
+	function footer_editor() {
 		return get_bloginfo('description');
 	}
-	add_filter('admin_footer_text', 'pd_description');
+	add_filter('admin_footer_text', 'footer_editor');
 
 	// Return Search Blank
 	function make_blank_search ($query){

@@ -1,20 +1,24 @@
 <?php get_template_part( 'header' ); ?>
 
-<style>
-	body {
-		background-image: url(<?php the_field( 'store-background-image' ); ?>);
-		background-size: contain;
-		background-repeat: no-repeat;
+<?php if( get_field('store-background-color') || get_field('store-background-image') ): ?>
+	<style>
+		body {
+			<?php // if background-color ?>
+			<?php if( get_field('store-background-color') ): ?>
+				background-color: <?php the_field('store-background-color'); ?>;
+			<?php endif; ?>
 
-	<?php // if deselect repeat ?>
-	<?php if( in_array('repeat', get_field('store-background-repeat') ) ) { ?>
-		background-attachment: fixed;
-		background-image: url(<?php the_field( 'store-background-image' ); ?>);
-		background-size: auto;
-		background-repeat: repeat;
-	<?php } ?>
-	}
-</style>
+			<?php // if background-image ?>
+			<?php if( get_field('store-background-image') ): ?>
+				background-image: url(<?php the_field('store-background-image'); ?>);
+				background-size: <?php the_field('store-background-size'); ?>;
+				background-repeat: <?php the_field('store-background-repeat'); ?>;
+				background-position: <?php the_field('store-background-position'); ?> top;
+				background-attachment: <?php the_field('store-background-attachment'); ?>;
+			<?php endif; ?>
+		}
+	</style>
+<?php endif; ?>
 
 <div class="store-wrap">
 
@@ -105,14 +109,13 @@
 
 					<?php if( have_rows('store-section'.$c.'-content') ) : ?>
 						<section id="section-<?php echo $c; ?>" class="animation fade-in">
-
 						    <?php while ( have_rows('store-section'.$c.'-content') ) : the_row(); ?>
+
 						        <?php if( get_row_layout() == 'text' ): ?>
-						        	<?php the_sub_field('wysiwyg'); ?>
+						        	<?php the_sub_field('text'); ?>
 								<?php elseif( get_row_layout() == 'products' ): ?>
 									<div class="products">
-
-										<?php $images = get_sub_field('gallery'); ?>
+										<?php $images = get_sub_field('products'); ?>
 										<?php if( $images ): ?>
 										    <?php foreach( $images as $image ): ?>
 										        <a class="product lightbox-iframe-product" href="<?php echo get_attachment_link($image['ID']); ?>">
@@ -124,14 +127,12 @@
 										        </a>
 										    <?php endforeach; ?>
 										<?php endif; ?>
-
 									</div>
 						        <?php endif; ?>
-						    <?php endwhile; ?>
 
+						    <?php endwhile; ?>
 						</section>
 					<?php endif; ?>
-
 				<?php endfor; ?>
 			</div><!-- .tab-content -->
 
