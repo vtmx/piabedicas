@@ -19,7 +19,7 @@ $(function(){
 
 
 
-	/* Carousel
+	/* Carousel Home
 	---------------------------------------------------------------------------*/
 
 	// need var to custom controls
@@ -68,7 +68,7 @@ $(function(){
 	});
 
 
-	/* Carousel
+	/* Carousel Store Related
 	---------------------------------------------------------------------------*/
 
 	// need var to custom controls
@@ -100,10 +100,10 @@ $(function(){
 	---------------------------------------------------------------------------*/
 
 	$(document).on('click', '.page-template-page-comercios .pagination a, .page-template-page-comercios .store-categories a', function(e) {
-
 		// remove mouse behaivor
 		e.preventDefault();
 
+		// go top to page
 		$('html, body').animate({ scrollTop: 0 });
 
 		// atributes
@@ -132,10 +132,10 @@ $(function(){
 	/* Search
 	---------------------------------------------------------------------------*/
 	$(document).on('click', '.search .pagination a', function(e) {
-
 		// remove mouse behaivor
 		e.preventDefault();
 
+		// go top to page
 		$('html, body').animate({ scrollTop: 0 });
 
 		// atributes
@@ -152,6 +152,43 @@ $(function(){
 			$('#ajax-container').addClass('fade-in');
 		});
 	}); // click
+
+
+	/* Blog
+	---------------------------------------------------------------------------*/
+	$(document).on('click', '.blog-aside li a, .blog-pagination a, .post-title', function(e) {
+		// remove mouse behaivor
+		e.preventDefault();
+
+		// go top to page
+		$('html, body').animate({ scrollTop: 0 });
+
+		// atributes
+		var url = $(this).attr('href');
+		url = url + ' #ajax-container';
+
+		// ajax loading
+		$('.ajax-loading-icon').removeClass('fade-out').addClass('fade-in');
+		$('#ajax-container').addClass('fade-out');
+
+		// ajax loaded
+		$('#content').load( url, function() {
+			$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
+			$('#ajax-container').addClass('fade-in');
+		});
+	}); // click
+
+	// aside active
+	$('.blog-aside a').click(function() {
+		$('.blog-aside li').removeClass('active current-cat');
+		$(this).parent().addClass('current-cat');
+	});
+
+	// remove active from single page
+	$('.post-title').click(function() {
+		$('.blog-aside li').removeClass('active current-cat');
+	});
+
 
 
 	/* Tab

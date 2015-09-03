@@ -6,10 +6,6 @@
 			<?php the_content(); ?>
 		<?php endwhile; ?>
 	</div>
-
-	<aside class="page-aside">
-		<?php dynamic_sidebar('sidebar-blog'); ?>
-	</aside>
 </div>
 
 <?php get_template_part('footer'); ?>

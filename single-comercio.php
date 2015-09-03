@@ -204,8 +204,8 @@
 				})();
 			</script>
 			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		</div>
-	</div><!-- #comments -->
+		</div><!-- #comments -->
+	</div><!-- .container -->
 <?php endif; ?>
 
 <?php get_template_part( 'footer' ); ?>

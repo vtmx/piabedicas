@@ -1,21 +1,31 @@
 <?php get_template_part( 'header' ); ?>
 
 <div class="container">
-	<div class="page-content">
-		<?php while ( have_posts() ) : the_post(); ?>
-			<article class="post">
-				<a href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
-				<?php the_content(); ?>
-			</article>
-		<?php endwhile; ?>
+	<div id="content" class="blog-content animation fade-in">
+		<div id="ajax-container" class="animation">
+			<?php while ( have_posts() ) : the_post(); ?>
+				<article class="post">
+					<a class="post-title" href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
+					<?php the_content(); ?>
+				</article>
+			<?php endwhile; ?>
 
-		<?php if( function_exists('wp_pagenavi') ) : ?>
-			<div class="pagination"><?php wp_pagenavi(); ?></div>
-		<?php endif; ?>
+			<?php if ( function_exists( 'wp_pagenavi' ) ) : ?>
+				<div class="pagination"><?php wp_pagenavi(); ?></div>
+			<?php endif; ?>
+		</div>
 	</div>
 
-	<aside class="page-aside">
-		<?php dynamic_sidebar('sidebar-blog'); ?>
+	<aside class="blog-aside">
+		<div class="widget">
+			<h2 class="widget-title">Categorias</h2>
+			<ul>
+				<li class="cat-item current-cat"><a href="<?php bloginfo('url'); ?>/blog">Todos</a></li>
+
+				<?php $args = array( 'title_li' => null, 'exclude' => '1' ); ?>
+				<?php wp_list_categories( $args ); ?>
+			</ul>
+		</div>
 	</aside>
 </div>
 

@@ -1,6 +1,6 @@
 		</main>
 
-		<footer>
+		<footer role="contentinfo">
 			<div class="container">
 				<div class="author">Desenvolvido por <a href="http://vitormelo.com.br" target="_blank">Vitor Melo</a>
 			</div>

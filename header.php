@@ -18,19 +18,19 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<header>
+		<header role="banner">
 			<div class="container">
 				<a href="<?php bloginfo('url'); ?>" class="logo">
 					<img src="<?php bloginfo('template_directory'); ?>/img/logo.svg" alt="Logo do site Piabedicas">
 				</a>
 
-				<nav>
+				<nav role="navigation">
 					<?php //wp_nav_menu('menu'); ?>
 					<ul class="menu">
 						<li class="menu-item-store"><a href="<?php bloginfo('url'); ?>/comercios">Comércios <i class="fa fa-angle-down"></i></a>
 							<ul class="sub-menu">
-								<?php $cat = array( 'title_li' => null, 'taxonomy' => 'comercio-categoria' ); ?>
-								<?php wp_list_categories( $cat ); ?>
+								<?php $args = array( 'title_li' => null, 'taxonomy' => 'comercio-categoria' ); ?>
+								<?php wp_list_categories( $args ); ?>
 							</ul>
 						</li>
 
@@ -50,4 +50,4 @@
 			</div>
 		</header>
 
-		<main>
+		<main role="main">
