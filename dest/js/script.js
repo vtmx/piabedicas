@@ -186,8 +186,8 @@ d[0].offsetTop||15===d[0].offsetTop;d.remove();a.fixedPosition=e}f.extend(b.defa
 
 $(function(){
 
-	/* Submenu show on focus
-	---------------------------------------------------------------------------*/
+	// Submenu show on focus
+	// ---------------------------------------------------------------------------
 
 	// variables elements
 	var $menuLink = $('.menu').find('.menu-item-store a');
@@ -204,9 +204,8 @@ $(function(){
 	});
 
 
-
-	/* Carousel Home
-	---------------------------------------------------------------------------*/
+	// Carousel Home
+	// ---------------------------------------------------------------------------
 
 	// need var to custom controls
 	var homeSlider = $('.home .slider .owl-carousel');
@@ -254,8 +253,8 @@ $(function(){
 	});
 
 
-	/* Carousel Store Related
-	---------------------------------------------------------------------------*/
+	// Carousel Store Related
+	// ---------------------------------------------------------------------------
 
 	// need var to custom controls
 	var storeSlider = $('.stores-related .owl-carousel');
@@ -282,8 +281,8 @@ $(function(){
 	});
 
 
-	/* Store Ajax Pagination
-	---------------------------------------------------------------------------*/
+	// Store Ajax Load
+	// ---------------------------------------------------------------------------
 
 	$(document).on('click', '.page-template-page-comercios .pagination a, .page-template-page-comercios .store-categories a', function(e) {
 		// remove mouse behaivor
@@ -294,17 +293,25 @@ $(function(){
 
 		// atributes
 		var url = $(this).attr('href');
-		var content = $('#stores .store-link');
 		url = url + ' #ajax-container';
 
-		// ajax loading
+		// show loading icon
 		$('.ajax-loading-icon').removeClass('fade-out').addClass('fade-in');
+		// hide container
 		$('#ajax-container').addClass('fade-out');
 
 		// ajax loaded
-		$('#stores').load( url, function() {
-			$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
-			$('#ajax-container').addClass('fade-in');
+		$('#stores').load(url, function(response, status, xhr) {
+			if (status == 'success') {
+				// remove loading image
+				$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
+				// show container
+				$('#ajax-container').addClass('fade-in');
+			} else {
+				// show error message
+				$('.ajax-loading-error').addClass('fade-in');
+				console.log('Erro ' + xhr.status + ' - ' + xhr.statusText);
+			}
 		});
 	}); // click
 
@@ -315,8 +322,9 @@ $(function(){
 	});
 
 
-	/* Search
-	---------------------------------------------------------------------------*/
+	// Search Ajax Load
+	// ---------------------------------------------------------------------------
+
 	$(document).on('click', '.search .pagination a', function(e) {
 		// remove mouse behaivor
 		e.preventDefault();
@@ -328,20 +336,30 @@ $(function(){
 		var url = $(this).attr('href');
 		url = url + ' #ajax-container';
 
-		// ajax loading
+		// show loading icon
 		$('.ajax-loading-icon').removeClass('fade-out').addClass('fade-in');
+		// hide container
 		$('#ajax-container').addClass('fade-out');
 
 		// ajax loaded
-		$('.search #content').load( url, function() {
-			$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
-			$('#ajax-container').addClass('fade-in');
+		$('#content').load( url, function(response, status, xhr) {
+			if (status == 'success') {
+				// remove loading image
+				$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
+				// show container
+				$('#ajax-container').addClass('fade-in');
+			} else {
+				// show error message
+				$('.ajax-loading-error').addClass('fade-in');
+				console.log('Erro ' + xhr.status + ' - ' + xhr.statusText);
+			}
 		});
 	}); // click
 
 
-	/* Blog
-	---------------------------------------------------------------------------*/
+	// Blog Ajax Load
+	// ---------------------------------------------------------------------------
+
 	$(document).on('click', '.blog-aside li a, .blog-pagination a, .post-title', function(e) {
 		// remove mouse behaivor
 		e.preventDefault();
@@ -353,14 +371,23 @@ $(function(){
 		var url = $(this).attr('href');
 		url = url + ' #ajax-container';
 
-		// ajax loading
+		// show loading icon
 		$('.ajax-loading-icon').removeClass('fade-out').addClass('fade-in');
+		// hide container
 		$('#ajax-container').addClass('fade-out');
 
 		// ajax loaded
-		$('#content').load( url, function() {
-			$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
-			$('#ajax-container').addClass('fade-in');
+		$('#content').load( url, function(response, status, xhr) {
+			if (status == 'success') {
+				// remove loading image
+				$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
+				// show container
+				$('#ajax-container').addClass('fade-in');
+			} else {
+				// show error message
+				$('.ajax-loading-error').addClass('fade-in');
+				console.log('Erro ' + xhr.status + ' - ' + xhr.statusText);
+			}
 		});
 	}); // click
 
@@ -377,8 +404,8 @@ $(function(){
 
 
 
-	/* Tab
-	---------------------------------------------------------------------------*/
+	// Tab
+	// ---------------------------------------------------------------------------
 
 	// Add class active first tab and section
 	$('.store-pages .tab li:first-child').addClass('active');
@@ -396,8 +423,8 @@ $(function(){
 	});
 
 
-	/* Lightbox
-	---------------------------------------------------------------------------*/
+	// Lightbox
+	// ---------------------------------------------------------------------------
 
 	// add class lightbox for links to image
 	$('a[href$=".jpg"], a[href$=".png"], a[href$=".gif"]').attr('class', 'lightbox');
@@ -438,6 +465,5 @@ $(function(){
 		'type': 'iframe',
 		width: 940
 	});
-
 
 });

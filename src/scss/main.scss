@@ -668,6 +668,20 @@ header .logo:hover, header .logo:focus, .home .logo,
 	opacity: 0;
 }
 
+.ajax-loading-error {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	z-index: 1;
+	width: 200px;
+	margin-left: -100px;
+	padding: 20px;
+	border: 1px solid $color-primary;
+	background: #fff;
+	opacity: 0;
+	text-align: center;
+}
+
 // =facebook
 
 header .facebook {
