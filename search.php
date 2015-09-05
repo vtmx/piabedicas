@@ -18,16 +18,11 @@
 			</h4>
 		</hgroup>
 
-		<div id="search-result">
+		<div class="search-result">
 			<?php while( have_posts() ){ the_post(); ?>
 				<a class="search-link" href="<?php the_permalink(); ?>">
-					<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'thumbnail', 'class' => 'store-thumb' ) ); ?>
-
-					<div class="body">
-						<h2><?php the_title(); ?></h2>
-						<cite><?php the_permalink(); ?></cite>
-						<p><?php the_excerpt(); ?></p>
-					</div>
+					<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'store-thumb', 'class' => 'store-thumb' ) ); ?>
+					<h2><?php the_title(); ?></h2>
 				</a>
 			<?php } ?>
 		</div>
@@ -45,7 +40,7 @@
 					<h4>Tente pesquisar outra palavra</h4>
 				</hgroup>
 
-				<div class="search-smille"><i class="fa fa-frown-o"></i></div>
+				<div class="error-image"></div>
 
 				<a href="<?php bloginfo( 'url' ); ?>" class="btn btn-primary" title="Voltar para a página incial">Voltar para página incial</a>
 			</div>

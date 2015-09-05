@@ -451,7 +451,8 @@ header {
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); //0px 3px 3px rgba(0, 0, 0, 0.1)
 	@include clearfix;
 
-	// = logo
+
+	// =logo
 
 	.logo {
 		float: left;
@@ -933,14 +934,14 @@ main {
 // =news
 
 .news {
-	padding: 40px 0;
+	padding: 40px 0 20px 0;
 	@include clearfix;
 
 	.new {
 		display: block;
 		float: left;
 		width: 30%;
-		margin-right: 30px;
+		margin: 0 1% 20px;
 		border: 1px solid #ddd;
 		border-radius: 2px;
 		background: #fff;
@@ -995,9 +996,9 @@ main {
 }
 
 
-//=objective
+// =objective
 .objective {
-	padding: 80px 0;
+	padding: 80px 0 100px 0;
 	background: #00abc9;
 	text-align: center;
 	color: #fff;
@@ -1489,6 +1490,18 @@ main {
 
 // =comments
 
+.comments {
+	position: relative;
+
+	.hidden-disqus-footer {
+		position: absolute;
+		bottom: 0;
+		width: calc(100% - 40px);
+		height: 60px;
+		background: #fff;
+	}
+}
+
 .single-comercio .stores-related, .single-comercio .comments {
 	clear: both;
 	margin: 0 auto;
@@ -1578,27 +1591,31 @@ main {
 // -----------------------------------------------------------------------------
 
 .search {
-
 	a:hover img {
 		border-color: #e6e6e6;
 	}
 
-	main {
-		padding: 0 10px;
+	header {
+		margin-bottom: 20px;
 	}
 
-	hgroup, .error-404 hgroup {
+	.search-result {
 		margin-bottom: 10px;
-		padding: 0 10px;
+		@include clearfix;
 	}
 
-	h3, .error-404 h3 {
+	hgroup {
+		padding: 0 15px;
+		margin-bottom: 30px;
+	}
+
+	h3 {
 		margin-bottom: 0;
 		font-size: 24px;
-		font-weight: bold;
+		font-weight: 600;
 	}
 
-	h4, .error-404 h4 {
+	h4 {
 		font-size: 18px;
 	}
 
@@ -1614,93 +1631,75 @@ main {
 .search-link {
 	display: inline-block;
 	position: relative;
-	overflow: hidden;
-	width: calc(50% - 22px);
-	height: 195px;
-	margin: 0 10px 20px;
+	width: 30%;
+	margin: 0 .8% 20px;
 	padding: 20px;
 	background: #fff;
 	border: 1px solid #ddd;
 	border-radius: 2px;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 	line-height: 20px;
+	text-align: center;
 	color: #666;
 
-	p {
-		margin-bottom: 0;
+	&:hover, &:focus {
+		border-color: $color-primary;
+		color: #666;
+		transform: scale(1.01);
 	}
-}
 
-#search-result {
-	@include clearfix;
-}
+	&:active {
+		border-color: #999;
+		transform: scale(.99);
+	}
 
-.search-link {
 	.store-thumb {
 		display: block;
-		float: left;
 		width: 200px;
 		height: 150px;
-		margin-right: 20px;
+		margin: 0 auto 10px auto;
 	}
 
-	:hover .store-thumb {
+	&:hover .store-thumb {
 		opacity: 1;
 	}
 
-	.body {
-		overflow: hidden;
-	}
-
-	.body:after {
-		display: block;
-		position: absolute;
-		bottom: 0;
-		width: 443px;
-		height: 30px;
-		background: #fff;
-		background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.44) 20%, rgba(255, 255, 255, 1) 45%);
-		content: '';
-	}
-
 	h2 {
+		margin-bottom: 0;
 		font-size: 18px;
-		font-weight: bold;
-		margin-bottom: 2px;
-	}
-
-	cite {
-		display: block;
-		margin-bottom: 10px;
-		font-style: normal;
-		color: $color-primary;
 	}
 }
 
-.search-link:hover, .search-link:focus {
-	border-color: $color-primary;
-	color: #666;
-	transform: scale(1.01);
-}
+.search-no-results, .error404 {
 
-.search-link:active {
-	border-color: #999;
-	transform: scale(.99);
-}
+	header {
+		margin-bottom: 20px;
+	}
 
-.search .pagination {
-	width: 100%;
-}
+	main {
+		text-align: center;
+	}
 
-.error-search, .error-404 {
-	text-align: center;
-}
+	hgroup {
+		margin-bottom: 30px;
+	}
 
-.search-smille {
-	width: 256px;
-	height: 256px;
-	margin: 0 auto 30px auto;
-	background: url(#{$path-img}/icon-ninja.svg) no-repeat;
+	h3 {
+		margin-bottom: 0;
+		font-size: 24px;
+		font-weight: 600;
+	}
+
+	h4 {
+		font-size: 18px;
+	}
+
+	.error-image {
+		width: 256px;
+		height: 256px;
+		margin: 0 auto 30px auto;
+		background: url(#{$path-img}/icon-ninja.svg) no-repeat;
+	}
 }
 
 //
@@ -1794,8 +1793,8 @@ main {
 
 .blog-content {
 	float: left;
-	width: 670px;
-	margin: 0 30px 0 15px;
+	width: 65.5%;
+	margin: 0 3% 0 15px;
 
 
 	.post {
@@ -1815,7 +1814,7 @@ main {
 
 .blog-aside {
 	float: left;
-	width: 280px;
+	width: 30%;
 	padding: 0;
 
 	ul {
@@ -1887,11 +1886,8 @@ main {
 
 footer {
 	display: none;
+	padding: 15px 0;
 	background: #fff;
-
-	.container {
-		padding: 15px 0;
-	}
 }
 
 .home footer {
@@ -1933,251 +1929,261 @@ footer {
 
 @media(max-width: 1020px) {
 
-	header, .page-template-page-comercios header {
+	// container
+	.container {
+		margin: 0 20px;
+	}
+
+	// header
+	header {
+		margin-bottom: 20px;
+
+		.container {
+			margin: 0;
+		}
+
+		.ajax-loading-icon, .ajax-loading-error {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			border: 1px solid #e6e6e6;
+			border-radius: 5px;
+			background-color: #fff;
+			box-shadow: 0 1px 3px rgba(0,0,0,.1);
+			z-index: 1;
+		}
+
+		.ajax-loading-icon {
+			width: 50px;
+			height: 50px;
+			margin-top: -25px;
+			margin-left: -25px;
+			background: #fff url(#{$path-img}/loading.gif) no-repeat center;
+		}
+
+		.ajax-loading-error {
+			width: 200px;
+			margin-top: -50px;
+			margin-left: -100px;
+		}
+
 		.facebook {
 			margin-right: 20px;
 		}
 	}
 
-	// main
-
-	main .container {
-		width: 100%;
-		padding: 0 20px;
-		margin: 0;
-	}
-
-	.single-comercio .store-wrap {
-		margin: 0 20px;
-	}
-
-	.home main {
-		padding: 0;
-	}
-
-	// slider
-
-	.home .slider {
-		height: auto;
-		padding: 20px 0 25px 0;
-
-		.owl-wrap {
-			height: auto;
-			padding: 50px 0 20px 0;
-		}
-
-		.owl-wrapper-outer {
-			height: auto;
-		}
-
-		.owl-carousel .owl-buttons div {
-			display: block;
-			top: 44%;
-			height: 60px;
-			margin-top: -30px;
-			background: #333;
-			font-size: 36px;
-			line-height: 60px;
-			color: #eee;
-			opacity: 1;
-		}
-
-		// pagination
-
-		.owl-pagination {
-			padding-top: 25px;
-		}
-
-		.owl-pagination li a {
-			width: 70px;
-			height: 20px;
-			border-radius: 0;
-		}
-	}
-
-	main .slider .container {
-		width: calc(100% - 40px);
-		margin: 0 auto;
-		padding: 0;
-	}
-
-	// news
-
-	.news {
-		text-align: center;
-
-		.new {
-			display: inline-block;
-			float: none;
-			width: 31.1%;
-			margin-right: 2%;
-		}
-
-		.new img {
-			height: auto;
-		}
-	}
-
-	// plans
-
-	.plans {
-		padding: 40px 0;
-
-		.btn {
-			padding: 10px;
-		}
-	}
-
-	// store
-
-	.store-categories .container {
-		margin-top: 0;
-	}
-
-	#stores, .pagination {
-		float: none;
-		clear: both;
-		width: 100%;
-	}
-
-	.store-category {
-		margin-bottom: 30px;
-	}
-
-	#stores {
-		margin: 0;
-	}
-
-	.store-list {
-		min-height: initial;
-		height: auto;
-	}
-
-	.store-link {
-		display: inline-block;
-		float: none;
-		width: 46%;
-		margin: 0 1.5% 30px 1.5%;
-	}
-
-	#stores .store-link:nth-child(3n) {
-		margin-right: 1%;
-	}
-
-	.store-link .store-thumb {
-		width: 100%;
-		height: auto;
-	}
-
-	// categories
-
-	.store-category {
-		h3, a {
-			padding: 18px 15px;
-		}
-	}
-
-	.store-loading-icon {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 50px;
-		height: 50px;
-		margin-top: -25px;
-		margin-left: -25px;
-		background-color: #535353;
-		border-radius: 5px;
-		z-index: 1000;
-	}
-
 	// paginagion
-
 	.pagination {
-		margin-bottom: 40px;
-
 		a, .current{
 			padding: 13px 30px;
 		}
 	}
 
-	// store-single
+	// home
+	// ----------------------------------------------------------------------------
+	.home {
+		header {
+			margin-bottom: 30px;
 
-	.store {
-		.store-thumb {
-			float: left;
-			max-width: 100%;
+			.container {
+				margin: 0;
+			}
+
+			.logo {
+				margin-left: 20px;
+			}
+		}
+
+		main {
+			margin: 0;
+		}
+
+		.container {
+			margin: 0 20px;
+		}
+
+		.slider {
 			height: auto;
-			min-height: auto;
-			margin: 0 30px 20px 20px;
+			padding: 20px 0 25px 0;
+
+			.owl-wrap {
+				height: auto;
+				padding: 50px 0 20px 0;
+			}
+
+			.owl-wrapper-outer {
+				height: auto;
+			}
+
+			.owl-carousel .owl-buttons div {
+				display: block;
+				top: 44%;
+				height: 60px;
+				margin-top: -30px;
+				background: #333;
+				font-size: 36px;
+				line-height: 60px;
+				color: #eee;
+				opacity: 1;
+			}
+
+			// pagination
+			.owl-pagination {
+				padding-top: 25px;
+			}
+
+			.owl-pagination li a {
+				width: 70px;
+				height: 20px;
+				border-radius: 0;
+			}
 		}
 
-		h2, #store-info h3, #store-info ul {
-			overflow: hidden;
+		// marketing
+		.marketing {
+			padding: 40px 0;
 		}
 
-		h2 {
-			font-size: 36px;
+		// objective
+		.objective  {
+			padding: 60px 0 80px 0;
 		}
 
-		h3 {
-			margin-bottom: 20px;
-			font-size: 18px;
+		// plan
+		.plans {
+			padding: 60px 0;
 		}
 
-		ul {
-			margin-bottom: 20px;
-			font-size: 16px;
+		// news
+		.news {
+
+			.container {
+				margin: 0 10px;
+			}
+
+			.new {
+				margin: 0 1.5% 20px;
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		footer {
+			text-align: center;
 		}
 	}
 
-	// store-pages
+	// store
+	// ----------------------------------------------------------------------------
+	.page-template-page-comercios {
+		.container {
+			margin: 0;
+		}
 
-	.store-pages {
-		width: 100%;
-		margin: 0 0 20px 0;
+		.store-categories {
+			margin-bottom: 20px;
+		}
+
+		.store-link {
+			display: inline-block;
+			float: none;
+			width: 31.3%;
+			margin: 0 1% 30px 1%;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+
+	// store-single
+	// ----------------------------------------------------------------------------
+	.single-comercio {
+		background: #fff !important;
+
+		.container {
+			margin: 0;
+		}
+
+		header {
+			margin-bottom: 0;
+		}
+
+		.store-wrap {
+			margin: 0;
+			padding: 0 20px;
+			border: none;
+		}
+
+		.stores-related, .comments {
+			margin-bottom: 0;
+			border: none;
+			border-bottom: 1px solid #ddd;
+		}
+
+		.stores-related {
+			padding-bottom: 25px;
+			border-top: 1px solid #ddd;
+
+			.stores-related-controls button {
+				padding: 0 20px
+			}
+
+			.owl-pagination li a {
+				border-radius: 0;
+				width: 70px;
+				height: 20px;
+			}
+		}
 	}
 
 	// search
-
+	// ----------------------------------------------------------------------------
 	.search {
-		main {
-			margin: 30px 0 0 0;
-			padding: 0 20px;
-		}
-
 		.search-link {
-			width: 100%;
-			float: none;
+			img {
+				width: 100%;
+				height: auto;
+			}
 		}
 	}
 
-	// pages
+	// blog
+	// ----------------------------------------------------------------------------
+	.blog, .category, .single {
+		header {
+			margin-bottom: 20px;
+		}
 
-	.blog-content, .blog-aside {
-		float: none;
-		clear: both;
-		width: auto;
-		margin: 0 0 20px;
+		main {
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		.blog-content {
+			width: 67%;
+			margin: 0 3% 0 0;
+		}
+
+		.post {
+			margin-bottom: 20px;
+		}
+
+		.pagination {
+			margin-bottom: 20px;
+		}
 	}
-
-	// footer
-
-	footer .container {
-		width: 100%;
-		padding: 15px;
-		margin: 0;
-		text-align: center;
-	}
-
 }
 
-@media (max-width: 800px) {
-
+@media (max-width: 850px) {
 	// header
-
 	header {
-		margin-bottom: 20px;
-
 		.logo:hover, .logo:active, .logo:focus {
 			border: none;
 			background: transparent;
@@ -2187,80 +2193,74 @@ footer {
 			background: transparent;
 		}
 
+		// menu
+		.menu {
+			// remove icon dropdown
+			i {
+				display: none;
+			}
+
+			// hidden submenu on hover
+			& > li:hover > .sub-menu, .menu .active {
+				visibility: hidden;
+			}
+		}
+
+		// search
+		.search-form {
+			width: 100%;
+			margin: 0;
+			padding: 0 13px 20px;
+
+			input[type="search"] {
+				width: calc(100% - 20px);
+				height: 40px;
+				padding: 0 10px;
+				font-size: 14px;
+			}
+
+			button {
+				top: 3px;
+				right: 14px;
+				width: 36px;
+				height: 36px;
+			}
+
+			button i {
+				top: 10px;
+				right: 10px;
+			}
+		}
+
 		.facebook {
 			position: absolute;
 			top: 0;
 			right: 0;
-			margin-right: 12px;
+			margin-right: 13px;
 		}
 	}
 
+	// home
+	// ----------------------------------------------------------------------------
 	.home {
+		header {
+			.logo {
+				margin-left: 13px;
+			}
+		}
+
 		.slider-controls {
 			display: none;
 		}
 	}
 
-	// menu
-
-	.menu {
-		// remove icon dropdown
-		i {
-			display: none;
-		}
-
-		// hidden submenu on hover
-		& > li:hover > .sub-menu, .menu .active {
-			visibility: hidden;
-		}
-	}
-
-	// search
-
-	.search-form {
-		width: 100%;
-		margin: 0;
-		padding: 0 13px 20px 13px;
-
-		input[type="search"] {
-			width: calc(100% - 20px);
-			height: 40px;
-			padding: 0 10px;
-			font-size: 14px;
-		}
-
-		button {
-			top: 3px;
-			right: 14px;
-			width: 36px;
-			height: 36px;
-		}
-
-		button i {
-			top: 10px;
-			right: 10px;
-		}
-	}
-
-	.ajax-loading-icon {
-		position: absolute;
-		top: 15px;
-		right: 10px;
-		margin: 0;
-	}
-
-	// contact
-
-	.contact {
-		.wpcf7 {
-			width: 100%;
-			margin: 0 0 20px 0;
-			padding: 0;
-		}
-
-		input[type='submit'] {
-			width: 100%;
-			padding: 20px 50px;
+	// stores
+	// ----------------------------------------------------------------------------
+	.page-template-page-comercios {
+		header {
+			.facebook {
+				margin-right: 13px;
+			}
 		}
 	}
 }

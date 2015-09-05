@@ -75,14 +75,14 @@
 	<section class="plans">
 		<div class="container">
 			<div class="plan">
-				<h2 class="plan-title">Pré-Cadastro</h2>
+				<h2 class="plan-title">Cadastro</h2>
 				<div class="price"><span>R$</span>30<span>/mês</span></div>
 				<ul>
 					<li>Atualizações feitas pelo comerciante</li>
 					<li>Feedbacks dos usuários sobre seu serviço</li>
 					<li>Link personalizado Piabedicas</li>
 				</ul>
-				<a href="http://localhost/piabedicas/cadastro/" class='btn lightbox-iframe'>Pré-Cadastro</a>
+				<a href="http://localhost/piabedicas/cadastro/" class='btn lightbox-iframe'>Cadastro</a>
 			</div>
 		</div>
 	</section>

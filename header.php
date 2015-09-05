@@ -47,7 +47,7 @@
 				<a href="http://facebook.com/piabedicas" class="facebook" target="_blank"><i class="fa fa-facebook-official"></i></a>
 
 				<div class="ajax-loading-icon animation"></div>
-				<div class="ajax-loading-error animation">Erro no carregamento</div>
+				<div class="ajax-loading-error animation">Falha no carregamento</div>
 			</div>
 		</header>
 

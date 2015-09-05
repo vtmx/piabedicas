@@ -1,7 +1,7 @@
 $(function(){
 
 	// Submenu show on focus
-	// ---------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 
 	// variables elements
 	var $menuLink = $('.menu').find('.menu-item-store a');
@@ -19,7 +19,7 @@ $(function(){
 
 
 	// Carousel Home
-	// ---------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 
 	// need var to custom controls
 	var homeSlider = $('.home .slider .owl-carousel');
@@ -68,17 +68,13 @@ $(function(){
 
 
 	// Carousel Store Related
-	// ---------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 
 	// need var to custom controls
 	var storeSlider = $('.stores-related .owl-carousel');
 
 	storeSlider.owlCarousel({
-		items: 3, //10 items above 1000px browser width
-		itemsDesktop: [1000, 5], //5 items between 1000px and 901px
-		itemsDesktopSmall : [900, 3], // betweem 900px and 601px
-		itemsTablet: [600, 2], //2 items between 600 and 0
-		itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+		items: 3
 	});
 
 	$('.owl-page a').click(function(e){
@@ -96,7 +92,7 @@ $(function(){
 
 
 	// Store Ajax Load
-	// ---------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 
 	$(document).on('click', '.page-template-page-comercios .pagination a, .page-template-page-comercios .store-categories a', function(e) {
 		// remove mouse behaivor
@@ -137,7 +133,7 @@ $(function(){
 
 
 	// Search Ajax Load
-	// ---------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 
 	$(document).on('click', '.search .pagination a', function(e) {
 		// remove mouse behaivor
@@ -172,7 +168,7 @@ $(function(){
 
 
 	// Blog Ajax Load
-	// ---------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 
 	$(document).on('click', '.blog-aside li a, .blog-pagination a, .post-title', function(e) {
 		// remove mouse behaivor
@@ -219,7 +215,7 @@ $(function(){
 
 
 	// Tab
-	// ---------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 
 	// Add class active first tab and section
 	$('.store-pages .tab li:first-child').addClass('active');
@@ -237,47 +233,48 @@ $(function(){
 	});
 
 
+
 	// Lightbox
-	// ---------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 
 	// add class lightbox for links to image
 	$('a[href$=".jpg"], a[href$=".png"], a[href$=".gif"]').attr('class', 'lightbox');
 
-	// add class thumbnail
-	$('.gallery a').attr('class', 'thumbnail');
-
 	// add rel group
-	$('.gallery .thumbnail').attr('rel' , 'group');
+	$('.gallery a').attr('rel' , 'group');
 
-	// fancybox start
-	$('.lightbox, .gallery .thumbnail').fancybox({
-		padding: ([15, 15, 15, 15]),
-		helpers:{
-			overlay: { css: { 'background': 'rgba(0, 0, 0, 0.3)' } },
-			title: { type: 'inside' }
-		}
-	});
+	// if window > 800px
+	if (window.matchMedia('(min-width: 800px)').matches) {
+		// fancybox start
+		$('.lightbox, .gallery a').fancybox({
+			padding: ([15, 15, 15, 15]),
+			helpers:{
+				overlay: { css: { 'background': 'rgba(0, 0, 0, 0.3)' } },
+				title: { type: 'inside' }
+			}
+		});
 
-	// fancybox map
-	$('.lightbox-map').fancybox({
-		helpers: {	media : {} }
-	});
+		// fancybox map
+		$('.lightbox-map').fancybox({
+			helpers: {	media : {} }
+		});
 
-	// fancybox contact
-	$('.lightbox-iframe').fancybox({
-		'type': 'iframe',
-		maxWidth: 600
-		//'scrolling': 'no',
-		//'iframe': {'scrolling': 'no'}
-	});
+		// fancybox contact
+		$('.lightbox-iframe').fancybox({
+			'type': 'iframe',
+			maxWidth: 600
+			//'scrolling': 'no',
+			//'iframe': {'scrolling': 'no'}
+		});
 
-	// add rel group product
-	$('.products .product').attr('rel' , 'group');
+		// add rel group product
+		$('.products .product').attr('rel' , 'group');
 
-	// fancybox product
-	$('.lightbox-iframe-product').fancybox({
-		'type': 'iframe',
-		width: 940
-	});
+		// fancybox product
+		$('.lightbox-iframe-product').fancybox({
+			'type': 'iframe',
+			width: 940
+		});
+	} // matchMedia
 
 });
