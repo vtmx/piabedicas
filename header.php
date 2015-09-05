@@ -20,12 +20,12 @@
 	<body <?php body_class(); ?>>
 		<header role="banner">
 			<div class="container">
-				<a href="<?php bloginfo('url'); ?>" class="logo">
-					<img src="<?php bloginfo('template_directory'); ?>/img/logo.svg" alt="Logo do site Piabedicas">
+				<a href="<?php bloginfo( 'url' ); ?>" class="logo">
+					<img src="<?php bloginfo( 'template_directory' ); ?>/img/logo.svg" alt="Logo do site Piabedicas">
 				</a>
 
 				<nav role="navigation">
-					<?php //wp_nav_menu('menu'); ?>
+					<?php //wp_nav_menu( 'menu' ); ?>
 					<ul class="menu">
 						<li class="menu-item-store"><a href="<?php bloginfo('url'); ?>/comercios">Comércios <i class="fa fa-angle-down"></i></a>
 							<ul class="sub-menu">

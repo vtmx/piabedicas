@@ -22,6 +22,7 @@
 			<?php while( have_posts() ){ the_post(); ?>
 				<a class="search-link" href="<?php the_permalink(); ?>">
 					<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'thumbnail', 'class' => 'store-thumb' ) ); ?>
+
 					<div class="body">
 						<h2><?php the_title(); ?></h2>
 						<cite><?php the_permalink(); ?></cite>
@@ -31,7 +32,7 @@
 			<?php } ?>
 		</div>
 
-		<?php if( function_exists('wp_pagenavi') ) : ?>
+		<?php if( function_exists( 'wp_pagenavi' ) ) : ?>
 			<div class="pagination">
 				<?php wp_pagenavi(); ?>
 			</div>
@@ -46,7 +47,7 @@
 
 				<div class="search-smille"><i class="fa fa-frown-o"></i></div>
 
-				<a href="<?php bloginfo('url'); ?>" class="btn btn-primary" title="Voltar para a página incial">Voltar para página incial</a>
+				<a href="<?php bloginfo( 'url' ); ?>" class="btn btn-primary" title="Voltar para a página incial">Voltar para página incial</a>
 			</div>
 		<?php } ?>
 	</div><!-- #content -->

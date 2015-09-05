@@ -198,6 +198,11 @@
 	add_theme_support( 'post-formats' );
 	add_theme_support( 'post-thumbnails' );
 
+	// Using Plugin Simple Image Sizes
+	add_image_size( 'store-thumb', 200, 160, true );
+	add_image_size( 'store-single-thumb', 250, 200, true );
+	add_image_size( 'store-single-gallery', 217, 145, true );
+
 	// Style editor
 	remove_filter( 'the_content', 'wpautop' );
 	remove_filter( 'the_content', 'wptexturize' );

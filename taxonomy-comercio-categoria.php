@@ -27,9 +27,9 @@
 				'posts_per_page'         => '6',
 				'tax_query' => array(
                 array(
-	                    'taxonomy' => 'comercio-categoria',
-	                    'field' => 'slug',
-	                    'terms' => $term->slug
+	                    'taxonomy'       => 'comercio-categoria',
+	                    'field'          => 'slug',
+	                    'terms'          => $term->slug
 	                )
 	            ),
 			);
@@ -41,14 +41,18 @@
 			<div class="stores">
 				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 					<a class="store-link animation" href="<?php the_permalink(); ?>">
-						<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'thumb', 'class' => 'store-thumb' ) ); ?>
+						<?php if ( get_field( 'store-active' ) ) { ?>
+							<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'store-thumb', 'class' => 'store-thumb', 'alt' => 'Logo do comércio ' . get_the_title() ) ); ?>
+						<?php } else { ?>
+							<img class="store-thumb" src="<?php bloginfo( 'template_directory' ); ?>/img/no-logo.png" alt="Sem logo">
+						<?php } ?>
 						<h2 class="store-name"><?php the_title(); ?></h2>
 					</a>
 				<?php endwhile; ?>
 			</div>
 
 			<?php if( function_exists('wp_pagenavi') ) : ?>
-				<div class="pagination"><?php wp_pagenavi( array('query' => $query) ); ?></div>
+				<div class="pagination"><?php wp_pagenavi( array( 'query' => $query ) ); ?></div>
 			<?php endif; ?>
 		</div>
 	</div>
