@@ -74,7 +74,7 @@
 
 	<section class="plans">
 		<div class="container">
-			<div class="plan">
+			<a href="http://localhost/piabedicas/cadastro/" class="plan lightbox-iframe">
 				<h2 class="plan-title">Cadastro</h2>
 				<div class="price"><span>R$</span>30<span>/mês</span></div>
 				<ul>
@@ -82,8 +82,8 @@
 					<li>Feedbacks dos usuários sobre seu serviço</li>
 					<li>Link personalizado Piabedicas</li>
 				</ul>
-				<a href="http://localhost/piabedicas/cadastro/" class='btn lightbox-iframe'>Cadastro</a>
-			</div>
+				<div class="btn">Cadastro</div>
+			</a>
 		</div>
 	</section>
 
