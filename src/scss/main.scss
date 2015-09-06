@@ -484,13 +484,6 @@ header {
 	opacity: .8;
 }
 
-.header-image {
-	position: relative;
-	height: 600px;
-	background: url(#{$path-img}/header-image.jpg) no-repeat top center;
-	background-size: cover;
-}
-
 // =nav
 
 nav {
@@ -660,17 +653,18 @@ header .logo:hover, header .logo:focus, .home .logo,
 // =ajax loading
 
 .ajax-loading-icon {
+	display: none;
 	float: left;
 	margin: 20px 0 0 10px;
 	padding: 10px;
 	background: url(#{$path-img}/loading-store.gif) no-repeat center center;
 	text-align: center;
 	color: #999;
-	opacity: 0;
 }
 
 .ajax-loading-error {
-	position: absolute;
+	display: none;
+	position: fixed;
 	top: 30%;
 	left: 50%;
 	z-index: 1;
@@ -679,7 +673,6 @@ header .logo:hover, header .logo:focus, .home .logo,
 	padding: 20px;
 	border: 1px solid $color-primary;
 	background: #fff;
-	opacity: 0;
 	text-align: center;
 }
 
@@ -729,7 +722,7 @@ main {
 
 	img {
 		border: 1px solid #e6e6e6;
-		background: #fff url(#{$path-img}/loading.gif) center center no-repeat;
+		background: #fff url(#{$path-img}/loading.gif) no-repeat center center;
 		transition: all 0.2s;
 	}
 
@@ -975,6 +968,7 @@ main {
 
 	img:hover, img:focus {
 		opacity: .8;
+		cursor: pointer;
 	}
 
 	img:active {
@@ -995,8 +989,8 @@ main {
    }
 }
 
-
 // =objective
+
 .objective {
 	padding: 80px 0 100px 0;
 	background: #00abc9;
@@ -1014,11 +1008,9 @@ main {
 	}
 }
 
-
 // =plans
 
 .plans {
-
 	background: #232937 url('https://s3.amazonaws.com/www1.bigcommerce.com/assets/herobanners/ent-overview.jpg') no-repeat center center;
 	background-size: cover;
 	padding: 90px 0;
@@ -1080,7 +1072,7 @@ main {
 }
 
 //
-// =store-categories
+// =stores
 // -----------------------------------------------------------------------------
 
 .page-template-page-comercios header, .tax-comercio-categoria header {
@@ -1132,10 +1124,6 @@ main {
 	}
 }
 
-//
-// =stores
-// -----------------------------------------------------------------------------
-
 #stores {
 	margin: 0 0 30px -10px;
 	padding: 0 15px;
@@ -1166,7 +1154,6 @@ main {
 		background: #fff url(#{$path-img}/loading.gif) no-repeat center center;
 		transition: all 0.2s;
 	}
-
 
 	&:hover, &:focus {
 		border-color: $color-primary;
@@ -1706,12 +1693,15 @@ main {
 // =contact
 // -----------------------------------------------------------------------------
 
-.page-template-page-cadastro, .page-template-page-contato {
+.page-template-page-contato, .page-template-page-cadastro {
 	background: #fff;
 
+	header {
+		margin-bottom: 20px;
+	}
+
 	.container {
-		margin: 0;
-		padding: 0;
+		margin-bottom: 20px;
 	}
 
 	p {
@@ -1958,12 +1948,12 @@ footer {
 			height: 50px;
 			margin-top: -25px;
 			margin-left: -25px;
-			background: #fff url(#{$path-img}/loading.gif) no-repeat center;
+			background: #fff url(#{$path-img}/loading.gif) no-repeat center center;
 		}
 
 		.ajax-loading-error {
 			width: 200px;
-			margin-top: -50px;
+			margin-top: -30px;
 			margin-left: -100px;
 		}
 
@@ -2126,11 +2116,21 @@ footer {
 		}
 
 		.stores-related {
-			padding-bottom: 25px;
+			padding: 0 0 25px 0;
 			border-top: 1px solid #ddd;
 
 			.stores-related-controls button {
 				padding: 0 20px
+			}
+
+			.stores-related-controls .prev {
+				left: 0;
+				border-left-width: 0;
+			}
+
+			.stores-related-controls .next {
+				right: 0;
+				border-right-width: 0;
 			}
 
 			.owl-pagination li a {
@@ -2180,6 +2180,8 @@ footer {
 		}
 	}
 }
+
+// =media
 
 @media (max-width: 850px) {
 	// header
@@ -2263,6 +2265,26 @@ footer {
 			}
 		}
 	}
+
+	// store-single
+	// ----------------------------------------------------------------------------
+	.single-comercio {
+		.stores-related {
+			display: none;
+		}
+	}
+
+	// contact
+	// ----------------------------------------------------------------------------
+	.page-template-page-contato, .page-template-page-cadastro {
+		.container {
+			margin: 0;
+		}
+
+		header, footer {
+			display: none;
+		}
+	}
 }
 
 @media (max-width: 450px) {
@@ -2271,14 +2293,6 @@ footer {
 			width: 100%;
 			margin: 0;
 			padding: 13px 13px 12px 13px;
-		}
-	}
-}
-
-@media (min-width: 500px) {
-	.page-template-page-contato, .page-template-page-cadastro, .single-attachment {
-		header, footer {
-			display: none;
 		}
 	}
 }

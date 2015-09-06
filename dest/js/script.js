@@ -292,7 +292,7 @@ $(function(){
 		url = url + ' #ajax-container';
 
 		// show loading icon
-		$('.ajax-loading-icon').removeClass('fade-out').addClass('fade-in');
+		$('.ajax-loading-icon').fadeIn();
 		// hide container
 		$('#ajax-container').addClass('fade-out');
 
@@ -300,12 +300,12 @@ $(function(){
 		$('#stores').load(url, function(response, status, xhr) {
 			if (status == 'success') {
 				// remove loading image
-				$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
+				$('.ajax-loading-icon').fadeOut('fast');
 				// show container
 				$('#ajax-container').addClass('fade-in');
 			} else {
 				// show error message
-				$('.ajax-loading-error').addClass('fade-in');
+				$('.ajax-loading-error').fadeIn();
 				console.log('Erro ' + xhr.status + ' - ' + xhr.statusText);
 			}
 		});
@@ -333,7 +333,7 @@ $(function(){
 		url = url + ' #ajax-container';
 
 		// show loading icon
-		$('.ajax-loading-icon').removeClass('fade-out').addClass('fade-in');
+		$('.ajax-loading-icon').fadeIn();
 		// hide container
 		$('#ajax-container').addClass('fade-out');
 
@@ -341,12 +341,12 @@ $(function(){
 		$('#content').load( url, function(response, status, xhr) {
 			if (status == 'success') {
 				// remove loading image
-				$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
+				$('.ajax-loading-icon').fadeOut('fast');
 				// show container
 				$('#ajax-container').addClass('fade-in');
 			} else {
 				// show error message
-				$('.ajax-loading-error').addClass('fade-in');
+				$('.ajax-loading-error').fadeIn();
 				console.log('Erro ' + xhr.status + ' - ' + xhr.statusText);
 			}
 		});
@@ -368,7 +368,7 @@ $(function(){
 		url = url + ' #ajax-container';
 
 		// show loading icon
-		$('.ajax-loading-icon').removeClass('fade-out').addClass('fade-in');
+		$('.ajax-loading-icon').fadeIn();
 		// hide container
 		$('#ajax-container').addClass('fade-out');
 
@@ -376,12 +376,12 @@ $(function(){
 		$('#content').load( url, function(response, status, xhr) {
 			if (status == 'success') {
 				// remove loading image
-				$('.ajax-loading-icon').removeClass('fade-in').addClass('fade-out');
+				$('.ajax-loading-icon').fadeOut('fast');
 				// show container
 				$('#ajax-container').addClass('fade-in');
 			} else {
 				// show error message
-				$('.ajax-loading-error').addClass('fade-in');
+				$('.ajax-loading-error').fadeIn();
 				console.log('Erro ' + xhr.status + ' - ' + xhr.statusText);
 			}
 		});

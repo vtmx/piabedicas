@@ -16,23 +16,17 @@
 
 			<?php
 
-
-
-			// WP_Query arguments
+			// WP_Query arguments store active
 			$args = array (
 				'post_type'              => 'comercio',
+				// Esse atributo organizaria por store ativo, somente ordem alfabética
+				//'meta_key'               => 'store-active',
+				//'orderby'                => 'meta_value',
 				'orderby'                => 'rand',
 				'pagination'             => true,
 				'paged'                  => get_query_var('paged'),
-				'posts_per_page'         => '6'
+				'posts_per_page'         => '6',
 			);
-
-
-
-
-
-
-
 
 			// The Query
 			$query = new WP_Query( $args );
@@ -40,6 +34,7 @@
 
 			<div class="stores">
 				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					<?php $do_not_duplicate = $post->ID; ?>
 					<a class="store-link animation" href="<?php the_permalink(); ?>">
 						<?php if ( get_field( 'store-active' ) ) { ?>
 							<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'store-thumb', 'class' => 'store-thumb', 'alt' => 'Logo do comércio ' . get_the_title() ) ); ?>
