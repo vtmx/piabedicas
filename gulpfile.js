@@ -1,17 +1,32 @@
 // Modules Requires
-var gulp       = require('gulp');
-var sass       = require('gulp-ruby-sass');
-var uglify     = require('gulp-uglify');
-var concat     = require('gulp-concat');
+var gulp        = require('gulp');
+var sass        = require('gulp-ruby-sass');
+var uglify      = require('gulp-uglify');
+var concat      = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 
 // Sass
 gulp.task('sass', function() {
-	return sass('src/scss/style.scss', { style: 'compressed' })
+	return sass('src/scss/style.scss', {
+		style: 'compressed',
+		sourcemap: true
+	})
 		.on('error', function (err) {
 			console.error('Sass Error!', err.message);
 		})
-		.pipe(concat('style.css'))
+		.pipe(gulp.dest('dest/css'))
+		.pipe(browserSync.stream());
+});
+
+// Sass
+gulp.task('sass-editor', function() {
+	return sass('src/scss/style-editor.scss', {
+		style: 'compressed',
+		sourcemap: true
+	})
+		.on('error', function (err) {
+			console.error('Sass Error!', err.message);
+		})
 		.pipe(gulp.dest('dest/css'))
 		.pipe(browserSync.stream());
 });
@@ -30,7 +45,7 @@ gulp.task('php', function() {
     .pipe(browserSync.stream());
 });
 
-// browser Sync
+// Browser Sync
 gulp.task('browser-sync', function() {
     browserSync.init({
         proxy: "http://localhost/piabedicas/"
@@ -38,8 +53,9 @@ gulp.task('browser-sync', function() {
 
 	gulp.watch(['*.php', '*.html'], ['php']);
 	gulp.watch('src/scss/**/*.scss', ['sass']);
+	gulp.watch('src/scss/style-editor.scss', ['sass-editor']);
 	gulp.watch('src/js/**/*.js', ['js']);
 });
 
 // Call Task
-gulp.task('default', ['sass', 'js', 'php', 'browser-sync']);
+gulp.task('default', ['sass', 'sass-editor', 'js', 'php', 'browser-sync']);

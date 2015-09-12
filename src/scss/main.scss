@@ -59,6 +59,16 @@ img {
 	height: auto;
 }
 
+// =hr
+
+hr {
+	height: 1px;
+	margin: 20px 0;
+	border: none;
+	border-top: 1px solid #e5e5e5;
+	outline: none;
+}
+
 //
 // =headers
 // -----------------------------------------------------------------------------
@@ -221,11 +231,16 @@ input[type='submit']:active,
 // =tables
 // -----------------------------------------------------------------------------
 
+table, th, td {
+	border: 1px solid #ddd;
+}
+
 table {
 	width: 100%;
 	margin-bottom: 20px;
 	background: #fff;
-	border: 2px solid #eee;
+	border: 1px solid #ddd;
+	border-collapse: collapse;
 }
 
 table caption {
@@ -243,7 +258,6 @@ th, td {
 
 th {
 	background: $color-primary;
-	border: 1px solid #eee;
 	border-top-color: $color-primary;
 	border-bottom-color: $color-primary;
 	font-weight: normal;
@@ -257,10 +271,6 @@ th:first-child {
 
 th:last-child {
 	border-right-color: $color-primary;
-}
-
-td {
-	border: 1px solid #eee;
 }
 
 //
@@ -1271,7 +1281,7 @@ main {
 
 .store-details {
 	overflow: hidden;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 
 	.store-thumb {
 	   display: block;
@@ -1469,6 +1479,10 @@ main {
 
 .single-attachment {
 	background: #fff;
+
+	header, footer {
+		display: none;
+	}
 
 	.container {
 		margin: 0;

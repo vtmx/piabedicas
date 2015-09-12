@@ -204,6 +204,7 @@
 	add_image_size( 'store-single-gallery', 217, 145, true );
 
 	// Style editor
+	add_editor_style( 'dest/css/style-editor.css' );
 	remove_filter( 'the_content', 'wpautop' );
 	remove_filter( 'the_content', 'wptexturize' );
 	remove_filter( 'the_excerpt', 'wpautop' );
@@ -212,7 +213,7 @@
 	remove_filter( 'acf_the_content', 'wptexturize' );
 
 	// Use text editor by default
-	add_filter( 'wp_default_editor', create_function( '', 'return "html";' ));
+	//add_filter( 'wp_default_editor', create_function( '', 'return "html";' ));
 	//add_filter( 'user_can_richedit', create_function( '' , 'return false;' ) , 50);
 
 	// Remove style of gallery

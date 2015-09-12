@@ -247,7 +247,14 @@ $(function(){
 	if (window.matchMedia('(min-width: 800px)').matches) {
 		// fancybox start
 		$('.lightbox, .gallery a').fancybox({
+			beforeShow : function() {
+				var alt = this.element.find('img').attr('alt');
+				this.inner.find('img').attr('alt', alt);
+				this.title = alt;
+			},
+
 			padding: ([15, 15, 15, 15]),
+
 			helpers:{
 				overlay: { css: { 'background': 'rgba(0, 0, 0, 0.3)' } },
 				title: { type: 'inside' }
