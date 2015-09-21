@@ -198,10 +198,31 @@ th:last-child {
 // =mce
 // -----------------------------------------------------------------------------
 
+.alignleft, .alignright, .aligncenter, .alignnone {
+	float: none;
+	display: block;
+	margin: 0;
+}
+
+.alignleft, .alignnone {
+	margin-right: auto;
+}
+.alignright {
+	margin-left: auto;
+}
+
+.aligncenter {
+	margin: 0 auto;
+}
+
 .gallery, .mce-object {
 	margin: 0 0 10px;
 	border: 1px dashed #bbb;
 	background-color: #f7f7f7;
+}
+
+.gallery {
+	padding: 7px 5px 5px 5px;
 }
 
 .mce-object {

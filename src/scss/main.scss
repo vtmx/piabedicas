@@ -39,13 +39,6 @@ header a:focus {
 	box-shadow: 0 0 3px $color-primary;
 }
 
-#stores .store-link:focus  {
-	outline: 2px solid $color-primary;
-	outline-offset: -2px;
-	-moz-outline-radius:  2px;
-	box-shadow: 0 0 3px $color-primary;
-}
-
 a:active {
 	color: darken($color-primary, 5);
 }
@@ -748,8 +741,11 @@ main {
 		cursor: zoom;
 	}
 
+	a:focus img, .lightbox:focus {
+		outline: none;
+	}
+
 	a:active img {
-		border-color: #444;
 		opacity: 1;
 	}
 
@@ -1201,6 +1197,10 @@ main {
 		}
 	}
 
+	&:focus {
+		outline: none;
+	}
+
 	&:active {
 		border-color: $color-primary;
 		transform: scale(1);
@@ -1254,6 +1254,10 @@ main {
 	a:hover {
 		background: #fafafa;
 		color: $color-primary;
+	}
+
+	a:focus {
+		outline: none;
 	}
 
 	a:active, a:focus, .current {
@@ -1330,6 +1334,8 @@ main {
 	th {
 		width: 18%;
 		background: transparent;
+		font-weight: bold;
+		text-align: right;
 		color: #444;
 	}
 
@@ -1657,9 +1663,8 @@ main {
 .search-link {
 	display: inline-block;
 	position: relative;
-	width: 30%;
 	margin: 0 .8% 20px;
-	padding: 20px;
+	padding: 10px;
 	background: #fff;
 	border: 1px solid #ddd;
 	border-radius: 2px;
@@ -1674,16 +1679,19 @@ main {
 		transform: scale(1.01);
 	}
 
+	&:focus {
+		outline: none;
+	}
+
 	&:active {
-		border-color: #999;
 		transform: scale(.99);
 	}
 
 	.store-thumb {
 		display: block;
-		width: 200px;
-		height: 150px;
-		margin: 0 auto 10px auto;
+		width: 209px;
+		height: 209px;
+		margin: 0 auto 5px auto;
 	}
 
 	&:hover .store-thumb {
@@ -1692,7 +1700,7 @@ main {
 
 	h2 {
 		margin-bottom: 0;
-		font-size: 18px;
+		font-size: 14px;
 	}
 }
 
@@ -1736,10 +1744,6 @@ main {
 	background: #fff;
 
 	header {
-		margin-bottom: 20px;
-	}
-
-	main .container {
 		margin-bottom: 20px;
 	}
 
@@ -1960,7 +1964,7 @@ footer {
 
 	// container
 	.container {
-		margin: 0 20px;
+		margin: 0 10px;
 	}
 
 	// header
@@ -2184,6 +2188,8 @@ footer {
 	// ----------------------------------------------------------------------------
 	.search {
 		.search-link {
+			width: 31.3%;
+
 			img {
 				width: 100%;
 				height: auto;

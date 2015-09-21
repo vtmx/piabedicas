@@ -3,6 +3,10 @@
 	<head>
 		<!-- Metas -->
 		<meta charset="utf-8">
+		<meta name="author" content="Vitor Melo">
+		<meta name="google-site-verification" content="QZ8m608yn54IfBqovXbZHx1GuyXDynL04NfLwjJKg7w">
+		<meta name="msvalidate.01" content="F1482EA6DEE1CBDD3BE76A141F78B8B0">
+		<meta name="robots" content="index, follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Title -->

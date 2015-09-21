@@ -41,12 +41,19 @@
 				box-shadow: inset 0 1px 2px rgba(0,0,0,.07) !important;
 			}
 
+			/* Add shadow in gallery field */
 			.acf-gallery-attachments {
 				box-shadow: inset 0 1px 2px rgba(0,0,0,.07) !important;
 			}
 
+			/* Hide label fields, because repeat in layout */
 			.acf-field-wysiwyg .acf-label, .acf-field-gallery .acf-label {
 				display: none !important;
+			}
+
+			/* Height ACF visual editor */
+			.mce-edit-area iframe {
+				height: 600px !important;
 			}
 		</style>";
 
@@ -96,6 +103,11 @@
 					.layout[data-layout='products'] .acf-field[data-name='caption'] {
 						display: none;
 					}
+
+					/* Hide YoastSeo to post store */
+					#wpseo_meta {
+						display: none;
+					}
 				</style>";
 		}
 	}
@@ -130,6 +142,7 @@
 			$wp_admin_bar->remove_menu( 'wporg' );            // Remove the WordPress.org link
 			$wp_admin_bar->remove_menu( 'wp-logo' );          // Remove the WordPress logo
 			$wp_admin_bar->remove_menu( 'w3tc' );             // If you use w3 total cache remove the performance link
+			$wp_admin_bar->remove_menu( 'wpseo-menu' );             // If you use w3 total cache remove the performance link
 			// $wp_admin_bar->remove_menu( 'my-account' );    // Remove the user details tab
 			// $wp_admin_bar->remove_menu( 'view' );          // If you use w3 total cache remove the performance link
 		}
@@ -154,6 +167,7 @@
 			remove_meta_box( 'commentsdiv', 'comercio', 'normal' );
 			remove_meta_box( 'commentstatusdiv', 'comercio', 'normal' );
 			remove_meta_box( 'slugdiv', 'comercio', 'normal' );
+			remove_meta_box( 'wpseo_meta', 'comercio', 'normal' );
 
 			// Menu
 			remove_menu_page( 'index.php' );                   // Dashboard

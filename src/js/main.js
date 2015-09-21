@@ -94,7 +94,7 @@ $(function(){
 	// Store Ajax Load
 	// ----------------------------------------------------------------------------
 
-	$(document).on('click', '.page-template-page-comercios .pagination a, .page-template-page-comercios .store-categories a', function(e) {
+	$(document).on('click', '.store-categories a, .store-pagination a', function(e) {
 		// remove mouse behaivor
 		e.preventDefault();
 
