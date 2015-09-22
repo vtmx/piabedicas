@@ -1,10 +1,11 @@
 # Categorias
 
-
-- Educação
-    - Auto-Escolas
-    - Colégios
-    - Cursos
+- Automotivos
+    - Borracharias
+    - Implementos Rodoviários
+    - Locações
+    - Oficinas
+    - Peças
 
 
 - Alimentação
@@ -26,6 +27,12 @@
     - Tinturarias
 
 
+- Educação
+    - Auto-Escolas
+    - Colégios
+    - Cursos
+
+
 - Entreterimento
     - Bares
     - Espaço para Festas
@@ -42,44 +49,36 @@
     - Salões
     - Clínicas de Estética
     - Tatoo
-    - Suplemento
+    - Suplementos
 
 
-- Papelarias e Livrarias
+- Papelaria, Livraria, Música e Artesanato
 
 
 - Pet
     - Veterinários
-    - Petshops
+    - Pet-Shops
     - Rações
 
 
 - Saúde
     - Clínicas
     - Dentistas
-    - Exames
     - Farmácias
-    - Oftamologista
+    - Homeopatia
+    - Laboratórios
+    - Oftamologistas
+    - Pediatras
 
 
 - Serviços
     - Advogados
-    - Funerária
-    - Música
-
-
-- Veículos
-    - Borracharias
-    - Implementos Rodoviários
-    - Locações
-    - Oficinas
-    - Peças
+    - Funerárias
 
 
 - Vestimenta
     - Acessórios
     - Alugueis
-    - Bijus
     - Bolsas
     - Calçados
     - Óticas

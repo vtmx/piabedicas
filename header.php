@@ -50,8 +50,8 @@
 				</a>
 
 				<nav role="navigation">
-					<?php //wp_nav_menu( 'menu' ); ?>
-					<ul class="menu">
+					<?php wp_nav_menu( 'menu-header' ); ?>
+					<!-- <ul class="menu">
 						<li class="menu-item-store"><a href="<?php bloginfo('url'); ?>/comercios">Comércios <i class="fa fa-angle-down"></i></a>
 							<ul class="sub-menu">
 								<?php $args = array( 'title_li' => null, 'taxonomy' => 'comercio-categoria' ); ?>
@@ -61,7 +61,7 @@
 
 						<li class="menu-item-contact"><a class="lightbox-iframe" href="http://localhost/piabedicas/?page_id=57">Contato</a></li>
 						<li class="menu-item-contact"><a class="lightbox-iframe" href="http://localhost/piabedicas/cadastro/">Cadastro</a></li>
-					</ul>
+					</ul> -->
 				</nav>
 
 				<form class="search-form" role="search" method="get" id="searchform" action="<?php bloginfo('url'); ?>">

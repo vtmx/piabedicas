@@ -45,7 +45,7 @@
 					<th class="address">Endereço: </th>
 					<td itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
 						<span itemprop="streetAddress"><?php the_field( 'store-address' ); ?></span> -
-						<span itemprop="addressLocality">Piabetá</span>,
+						<span itemprop="addressLocality"><?php the_field( 'store-county' ); ?></span>,
 						<span>Magé</span>, <span itemprop="addressRegion">RJ</span> -
 						<a class="lightbox-map" itemprop="map" href="http://maps.google.com/maps?q=<?php the_field('store-address'); ?>,+Piabtetá,+Magé,+RJ">Mapa <i class="fa fa-map-marker"></i></a>
 					</td>

@@ -518,16 +518,9 @@ nav {
 	transition: all .2s;
 }
 
-.menu > li:hover > .sub-menu, .menu .active {
+.menu li:hover > .sub-menu, .menu .active {
 	visibility: visible;
 	opacity: 1;
-}
-
-.menu > .menu-item-has-children > a:after {
-	display: inline-block;
-	margin-left: 5px;
-	font: normal normal normal 14px/1 fontawesome;
-	content: '\f107';
 }
 
 .menu > li > a {
@@ -540,7 +533,8 @@ nav {
 header .logo:hover, header .logo:focus, .home .logo,
 .menu > li:hover, .menu > li > a:hover, .menu > li:hover > a,
 .menu > li:focus, .menu > li > a:focus, .menu > li:focus > a,
-.page-template-page-comercios .menu-item-store > a, .tax-comercio-categoria .menu-item-store > a, .single-comercio .menu-item-store > a,
+.page-template-page-comercios .menu-item-store > a,
+.tax-comercio-categoria .menu-item-store > a, .single-comercio .menu-item-store > a,
 .page-template-page-contato .menu-item-contact a {
 	background: lighten($color-secondary, 8%);
 	color: #fff;
@@ -551,6 +545,14 @@ header .logo:hover, header .logo:focus, .home .logo,
 	transition: none;
 }
 
+// Insert icon menu
+.menu .menu-item-2112 > a:after {
+	display: inline-block;
+	margin-left: 5px;
+	font: normal normal normal 14px/1 fontawesome;
+	content: '\f107';
+}
+
 // =sub-menu
 
 .sub-menu {
@@ -558,6 +560,7 @@ header .logo:hover, header .logo:focus, .home .logo,
 	position: absolute;
 	z-index: 2;
 	width: 250px;
+	margin-bottom: 30px;
 	background: #fff;
 	border-left: 1px solid #ddd;
 	border-right: 1px solid #ddd;
@@ -568,6 +571,7 @@ header .logo:hover, header .logo:focus, .home .logo,
 	transition: all .2s;
 
 	li {
+		position: relative;
 		border-bottom: 1px solid #eaeaea;
 	}
 
@@ -578,12 +582,12 @@ header .logo:hover, header .logo:focus, .home .logo,
 
 	a {
 		display: block;
-		padding: 15px;
+		padding: 10px 15px;
 		background: #fff;
 		color: #666;
 	}
 
-	a:hover, a:focus, > .current-cat a {
+	a:hover, a:focus, > .current-cat > a, > .current-menu-item > a, {
 		padding-left: 18px;
 		background: #fafafa;
 		color: $color-primary;
@@ -593,6 +597,29 @@ header .logo:hover, header .logo:focus, .home .logo,
 		background: #eee;
 		color: #666;
 	}
+
+	// sub-menu
+	.sub-menu {
+		border-radius: 3px;
+		top: 0;
+		left: 248px;
+
+		li:first-child, li:first-child a {
+			border-radius: 3px 3px 0 0;
+		}
+
+		li:last-child, li:last-child a {
+			border-radius: 0 0 3px 3px;
+		}
+	}
+}
+
+// Insert icon submenu
+.menu-item-43 > a:after {
+	content: '\f105';
+	float: right;
+	font: normal normal normal 14px/1 fontawesome;
+	line-height: 20px;
 }
 
 // =search
@@ -712,8 +739,9 @@ header .facebook:active {
 	margin-right: 15px;
 }
 
-.page-template-page-comercios header .facebook {
-	margin-right: 25px;
+.page-template-page-comercios header .facebook,
+.tax-comercio-categoria header .facebook {
+	margin-right: 40px;
 }
 
 .search header .facebook {
@@ -746,6 +774,7 @@ main {
 	}
 
 	a:active img {
+		border-color: #999;
 		opacity: 1;
 	}
 
@@ -1131,28 +1160,34 @@ main {
 	list-style: none;
 
 	ul {
+		overflow: auto;
+		margin-bottom: 0;
 		padding: 0 0 0 15px;
+		list-style: none;
 	}
 
 	li {
-		display: inline-block;
+		float: left;
+		position: relative;
 	}
 
 	a {
 		display: block;
-		padding: 15px;
+		padding: 10px;
 		color: #777;
-		border-bottom: 3px solid #fff;
+		transition: all .2s;
 	}
 
 	a:hover, a:focus, .current-cat a {
 		color: $color-primary;
+		background: #fafafa;
 	}
 
-	.current-cat a {
-		color: #00abc9;
-	    border-bottom: 3px solid #00abc9;
+	a:active, .current-cat a, .current-cat-parent a {
+		color: #fff;
+		background: $color-primary;
 	}
+
 }
 
 #stores {
@@ -1202,7 +1237,8 @@ main {
 	}
 
 	&:active {
-		border-color: $color-primary;
+		border-color: #999;
+		color: #444;
 		transform: scale(1);
 
 		.store-thumb {
@@ -1458,6 +1494,7 @@ main {
 	}
 
 	.product:active {
+		color: #444;
 		opacity: 1;
 	}
 
@@ -1749,6 +1786,10 @@ main {
 
 	p {
 		margin: 0;
+		// Editor plugin
+		// if ( ! defined( 'WPCF7_AUTOP' ) ) {
+		// 	define( 'WPCF7_AUTOP', false );
+		// }
 	}
 
 	p:first-child, p:last-child {
@@ -2118,6 +2159,9 @@ footer {
 
 		.store-categories {
 			margin-bottom: 20px;
+			a {
+				padding: 15px;
+			}
 		}
 
 		.store-link {
@@ -2138,7 +2182,8 @@ footer {
 	.single-comercio {
 		background: #fff !important;
 
-		.container {
+		.container, main .container {
+			max-width: none;
 			margin: 0;
 		}
 
@@ -2147,6 +2192,7 @@ footer {
 		}
 
 		.store-wrap {
+			max-width: none;
 			margin: 0;
 			padding: 0 20px;
 			border: none;
@@ -2314,8 +2360,8 @@ footer {
 	// store-single
 	// ----------------------------------------------------------------------------
 	.single-comercio {
-		.stores-related {
-			display: none;
+		.stores-related .stores {
+			width: 500px;
 		}
 	}
 
@@ -2329,6 +2375,12 @@ footer {
 		header, footer {
 			display: none;
 		}
+	}
+}
+
+@media (max-width: 600px) {
+	.stores-related {
+		display: none;
 	}
 }
 

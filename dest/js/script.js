@@ -260,10 +260,13 @@ $(function(){
 	var storeSlider = $('.stores-related .owl-carousel');
 
 	storeSlider.owlCarousel({
-		items: 3
+		items: 3,
+		itemsDesktop: [1020, 3],
+		itemsDesktopSmall: [850, 2]
+		//itemsTablet: [350, 2]
 	});
 
-	$('.owl-page a').click(function(e){
+	$('.owl-carousel a').click(function(e){
 		e.preventDefault();
 	});
 
@@ -313,7 +316,7 @@ $(function(){
 
 	// store category active
 	$('.store-categories a').click( function() {
-		$('.store-categories li').removeClass('active current-cat');
+		$('.store-categories li').removeClass('active current-cat current-cat-parent');
 		$(this).parent().addClass('current-cat');
 	});
 
@@ -412,7 +415,7 @@ $(function(){
 		e.preventDefault();
 
 		// add active this and remove all li if have active
-		$(this).parent('li').addClass('active').siblings().removeClass('active');;
+		$(this).parent('li').addClass('active').siblings().removeClass('active');
 
 		// add active section == href and hide others
 		$('.tab-content ' + $(this).attr('href')).show().siblings().hide();
@@ -450,6 +453,13 @@ $(function(){
 		// fancybox map
 		$('.lightbox-map').fancybox({
 			helpers: {	media : {} }
+		});
+
+		// fancybox contact
+		$('.menu a').each(function() {
+		  if ( $(this).text() === 'Contato' || $(this).text() === 'Cadastro' ) {
+		     $(this).addClass('lightbox-iframe');
+		  }
 		});
 
 		// fancybox contact

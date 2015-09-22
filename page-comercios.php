@@ -3,11 +3,13 @@
 <?php get_template_part( 'header' ); ?>
 
 <div class="store-categories">
-	<ul class="container">
-		<li class="current-cat"><a href="http://localhost/piabedicas/?page_id=49" title="Todos">Todos</a></li>
-		<?php $cat = array( 'title_li' => null, 'taxonomy' => 'comercio-categoria' ); ?>
-		<?php wp_list_categories( $cat ); ?>
-	</ul>
+	<div class="container">
+		<ul>
+			<li class="current-cat"><a href="http://localhost/piabedicas/?page_id=49" title="Todos">Todos</a></li>
+			<?php $cat = array( 'title_li' => null, 'taxonomy' => 'comercio-categoria' ); ?>
+			<?php wp_list_categories( $cat ); ?>
+		</ul>
+	</div>
 </div>
 
 <div class="container">
