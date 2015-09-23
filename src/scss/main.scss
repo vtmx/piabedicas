@@ -465,31 +465,43 @@ header {
 		float: left;
 		padding: 15px;
 		line-height: 0;
-	}
 
-	.logo img {
-		opacity: .8;
-		transition: all .15s;
-	}
+		&:hover, &:focus {
+			background: lighten($color-secondary, 8%);
+		}
 
-	.logo:hover img, .logo:focus img {
-		opacity: 1;
-	}
+		img {
+			opacity: .8;
+			transition: all .15s;
+		}
 
-	.logo:active img {
-		opacity: .8;
+		&:hover img, &:focus img {
+			opacity: 1;
+		}
+
+		&:active img {
+			opacity: .8;
+		}
 	}
 }
 
-.home header .logo:hover img,
-.home header .logo:focus img,
-.home header .logo img {
-	opacity: 1;
+// logo active home page
+.home {
+	header {
+		.logo {
+			background: lighten($color-secondary, 8%);
+
+			img {
+				opacity: 1;
+			}
+
+			&:active img {
+				opacity: .8;
+			}
+		}
+	}
 }
 
-.home header .logo:active img {
-	opacity: .8;
-}
 
 // =nav
 
@@ -509,48 +521,45 @@ nav {
 .menu {
 	float: left;
 	font-size: 13px;
-}
-
-.menu > li {
-	float: left;
-	position: relative;
-	margin-left: 1px;
-	transition: all .2s;
-}
-
-.menu li:hover > .sub-menu, .menu .active {
-	visibility: visible;
-	opacity: 1;
-}
-
-.menu > li > a {
-	display: block;
-	padding: 19px 20px 18px 20px;
 	font-weight: bold;
-	color: #b1bccd;
-}
 
-header .logo:hover, header .logo:focus, .home .logo,
-.menu > li:hover, .menu > li > a:hover, .menu > li:hover > a,
-.menu > li:focus, .menu > li > a:focus, .menu > li:focus > a,
-.page-template-page-comercios .menu-item-store > a,
-.tax-comercio-categoria .menu-item-store > a, .single-comercio .menu-item-store > a,
-.page-template-page-contato .menu-item-contact a {
-	background: lighten($color-secondary, 8%);
-	color: #fff;
-}
+	> li {
+		float: left;
+		position: relative;
+		margin-left: 1px;
+		transition: all .2s;
+	}
 
-.menu > li > a:active {
-	color: lighten($color-secondary, 50%);
-	transition: none;
-}
+	// Insert icon menu
+	> li > a > i {
+		float: right;
+		margin: 1px 0 0 8px;
+		font-size: 18px;
+	}
 
-// Insert icon menu
-.menu .menu-item-2112 > a:after {
-	display: inline-block;
-	margin-left: 5px;
-	font: normal normal normal 14px/1 fontawesome;
-	content: '\f107';
+	li:hover > .sub-menu, .menu .active {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	> li > a {
+		display: block;
+		padding: 19px 20px 18px 20px;
+		font-weight: bold;
+		color: #b1bccd;
+	}
+
+	> li:hover, > li > a:hover, > li:hover > a,
+	> li:focus, > li > a:focus, > li:focus > a,
+	> .current-menu-item > a {
+		background: lighten($color-secondary, 8%);
+		color: #fff;
+	}
+
+	> li > a:active {
+		color: lighten($color-secondary, 50%);
+		transition: none;
+	}
 }
 
 // =sub-menu
@@ -587,7 +596,9 @@ header .logo:hover, header .logo:focus, .home .logo,
 		color: #666;
 	}
 
-	a:hover, a:focus, > .current-cat > a, > .current-menu-item > a, {
+	a:hover, a:focus,
+	.current-menu-item > a,
+	.current-menu-parent > a {
 		padding-left: 18px;
 		background: #fafafa;
 		color: $color-primary;
@@ -598,10 +609,25 @@ header .logo:hover, header .logo:focus, .home .logo,
 		color: #666;
 	}
 
-	// sub-menu
+	// Insert icon submenu
+	li > a > i {
+		float: right;
+		font-size: 18px;
+		line-height: 20px;
+		transition: all .2s;
+	}
+
+	li > a:hover > i,
+	.current-menu-item > a > i,
+	.current-menu-parent > a > i {
+		margin-right: 3px;
+	}
+
+	// sub-menu sub-menu
 	.sub-menu {
-		border-radius: 3px;
-		top: 0;
+		border: 1px solid #ddd;
+		border-radius: 0 3px 3px 0;
+		top: -1px;
 		left: 248px;
 
 		li:first-child, li:first-child a {
@@ -612,14 +638,6 @@ header .logo:hover, header .logo:focus, .home .logo,
 			border-radius: 0 0 3px 3px;
 		}
 	}
-}
-
-// Insert icon submenu
-.menu-item-43 > a:after {
-	content: '\f105';
-	float: right;
-	font: normal normal normal 14px/1 fontawesome;
-	line-height: 20px;
 }
 
 // =search
@@ -1198,6 +1216,7 @@ main {
 .stores {
 	display: flex;
 	flex-flow: row wrap;
+	margin-bottom: 20px;
 }
 
 .store-link {
@@ -1302,6 +1321,11 @@ main {
 	}
 }
 
+#stores .pagination {
+	text-align: left;
+	margin: 0 10px 0;
+}
+
 //
 // =store-single
 // -----------------------------------------------------------------------------
@@ -1371,7 +1395,6 @@ main {
 		width: 18%;
 		background: transparent;
 		font-weight: bold;
-		text-align: right;
 		color: #444;
 	}
 

@@ -203,6 +203,18 @@ $(function(){
 		$submenu.removeClass('active');
 	});
 
+	$('.menu > li > a').each(function() {
+        if ( $(this).parent('li').children('ul').size() > 0 ) {
+            $(this).append(' <i class="fa fa-angle-down"></i>');
+        }
+    });
+
+	$('.sub-menu > li > a').each(function() {
+        if ( $(this).parent('li').children('ul').size() > 0 ) {
+            $(this).append('<i class="fa fa-angle-right"></i>');
+        }
+    });
+
 
 	// Carousel Home
 	// ----------------------------------------------------------------------------

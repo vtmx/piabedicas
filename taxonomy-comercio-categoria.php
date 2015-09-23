@@ -4,8 +4,8 @@
 
 <div class="store-categories">
 	<ul class="container">
-		<li><a href="http://localhost/piabedicas/?page_id=49" title="Todos">Todos</a></li>
-		<?php $cat = array( 'title_li' => null, 'taxonomy' => 'comercio-categoria' ); ?>
+		<li><a href="<?php bloginfo( 'url' ); ?>/comercios" title="Todos">Todos</a></li>
+		<?php $cat = array( 'title_li' => null, 'taxonomy' => 'comercio-categoria', 'parent' => 0 ); ?>
 		<?php wp_list_categories( $cat ); ?>
 	</ul>
 </div>
