@@ -537,7 +537,8 @@ nav {
 		font-size: 18px;
 	}
 
-	li:hover > .sub-menu, .menu .active {
+	// Submentu active
+	li:hover > .sub-menu, .active {
 		visibility: visible;
 		opacity: 1;
 	}
@@ -574,7 +575,7 @@ nav {
 	border-left: 1px solid #ddd;
 	border-right: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
-	border-radius: 0 0 3px 3px;
+	border-radius: 0 0 0 3px;
 	box-shadow: 1px 1px 3px rgba(0,0,0,.1);
 	opacity: 0;
 	transition: all .2s;
@@ -597,6 +598,7 @@ nav {
 	}
 
 	a:hover, a:focus,
+	li:hover > a,
 	.current-menu-item > a,
 	.current-menu-parent > a {
 		padding-left: 18px;
@@ -618,6 +620,7 @@ nav {
 	}
 
 	li > a:hover > i,
+	li:hover > a > i,
 	.current-menu-item > a > i,
 	.current-menu-parent > a > i {
 		margin-right: 3px;
@@ -637,6 +640,12 @@ nav {
 		li:last-child, li:last-child a {
 			border-radius: 0 0 3px 3px;
 		}
+	}
+
+	li:first-child .sub-menu {
+		top: 0;
+		border-top: none;
+		border-radius: 0 0 3px 0;
 	}
 }
 
@@ -937,6 +946,10 @@ main {
 	}
 }
 
+.slider .container:hover button {
+	opacity: 1;
+}
+
 // pagination
 
 .owl-pagination {
@@ -1196,14 +1209,14 @@ main {
 		transition: all .2s;
 	}
 
-	a:hover, a:focus, .current-cat a {
-		color: $color-primary;
+	a:hover, a:focus {
 		background: #fafafa;
+		color: $color-primary;
 	}
 
 	a:active, .current-cat a, .current-cat-parent a {
-		color: #fff;
 		background: $color-primary;
+		color: #fff;
 	}
 
 }
@@ -1216,14 +1229,14 @@ main {
 .stores {
 	display: flex;
 	flex-flow: row wrap;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .store-link {
 	display: inline-block;
 	width: 222px;
 	padding: 10px;
-	margin: 0 10px 25px;
+	margin: 0 10px 20px;
 	background: #fff;
 	border: 1px solid #ddd;
 	border-radius: 2px;
@@ -1377,9 +1390,6 @@ main {
 
    .store-info {
 	   overflow: hidden;
-	   a:hover, .tab-content a:hover, a:focus, .tab-content a:focus {
-		   text-decoration: underline;
-	   }
    }
 
 	table {

@@ -190,19 +190,23 @@ $(function(){
 	// ----------------------------------------------------------------------------
 
 	// variables elements
-	var $menuLink = $('.menu').find('.menu-item-store a');
-	var $submenu = $('.sub-menu');
+	$('.menu > li > a').each(function() {
+		if ( $(this).text() === 'Comércios' ) {
+			$(this).parent('li').addClass('menu-item-store');
+		}
+	});
 
 	// show sub-menu on focus
-	$menuLink.focus(function(){
-		$submenu.addClass('active');
+	$('.menu-item-store a').focus(function(){
+		$('.sub-menu').addClass('active');
 	});
 
 	// hidden sub-menu when focusout
-	$menuLink.focusout(function(){
-		$submenu.removeClass('active');
+	$('.menu-item-store a').focusout(function() {
+		$('.sub-menu').removeClass('active');
 	});
 
+	// Include icons
 	$('.menu > li > a').each(function() {
         if ( $(this).parent('li').children('ul').size() > 0 ) {
             $(this).append(' <i class="fa fa-angle-down"></i>');
@@ -278,7 +282,7 @@ $(function(){
 		//itemsTablet: [350, 2]
 	});
 
-	$('.owl-carousel a').click(function(e){
+	$('.owl-pagination a').click(function(e){
 		e.preventDefault();
 	});
 
