@@ -149,34 +149,40 @@
 
 <?php
 	// Get array of terms
-	$terms = get_the_terms( $post->ID , 'comercio-categoria', 'string' );
+	$terms = get_the_terms( $post->ID , 'comercio-categoria' );
+
 	// Pluck out the IDs to get an array of IDS
 	$term_ids = wp_list_pluck( $terms, 'term_id' );
 
 	// Query posts with tax_query. Choose in 'IN' if want to query posts with any of the terms
 	// Chose 'AND' if you want to query for posts with all terms
-	$second_query = new WP_Query( array(
-	'post_type' => 'comercio',
-	'tax_query' => array(
-	    array(
-	        'taxonomy' => 'comercio-categoria',
-	        'field' => 'term_id',
-	        'terms'    => $term_ids,
-	     )),
+	$tax_query = new WP_Query( array(
+		'post_type' => 'comercio',
+		'tax_query' => array(
+		    array(
+		        'taxonomy' => 'comercio-categoria',
+		        'field'    => 'term_id',
+		        'terms'    => $term_ids
+		     )
+		 ),
 		'posts_per_page' => 15,
-		'orderby' => 'rand',
-		'post__not_in'=>array($post->ID)
+		'orderby'        => 'rand',
+		'post__not_in'   => array($post->ID)
 	) );
 ?>
 
 <?php // Mandatory store have category ?>
-<?php if( $second_query->have_posts() ) { ?>
+<?php if( $tax_query->have_posts() ) : ?>
 	<div class="container">
 		<div class="stores-related">
-			<h3>Comercios da mesma categoria</h3>
+			<?php $term = get_term( $post->ID , 'comercio-categoria' ); ?>
+			<?php $term_link = get_term_link( $term ); ?>
+
+			<h3>Categoria <?php //the_terms( $post->ID , 'comercio-categoria', ' - ', ' &raquo; ' ); ?> <?php echo $terms[0]->name; ?></h3>
+
 			<div class="stores">
 				<div class="owl-carousel">
-					<?php while ($second_query->have_posts() ) : $second_query->the_post(); ?>
+					<?php while ($tax_query->have_posts() ) : $tax_query->the_post(); ?>
 						<a class="store-link item" href="<?php the_permalink(); ?>">
 							<?php if ( get_field( 'store-active' ) ) { ?>
 								<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'store-thumb', 'class' => 'store-thumb', 'alt' => 'Logo do comércio ' . get_the_title() ) ); ?>
@@ -195,7 +201,7 @@
 			</div>
 		</div>
 	</div>
-<?php } ?>
+<?php endif; ?>
 
 <?php if ( get_field( 'store-active' ) ) : ?>
 	<div class="container">

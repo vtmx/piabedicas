@@ -190,30 +190,31 @@ $(function(){
 	// ----------------------------------------------------------------------------
 
 	// variables elements
-	$('.menu > li > a').each(function() {
+	$('header .menu > li > a').each(function() {
 		if ( $(this).text() === 'Comércios' ) {
 			$(this).parent('li').addClass('menu-item-store');
 		}
 	});
 
 	// show sub-menu on focus
-	$('.menu-item-store a').focus(function(){
+	$('header .menu > li > a').focus(function(){
 		$('.sub-menu').addClass('active');
 	});
 
 	// hidden sub-menu when focusout
-	$('.menu-item-store a').focusout(function() {
+	$('header .menu > li > a').focusout(function() {
 		$('.sub-menu').removeClass('active');
 	});
 
-	// Include icons
-	$('.menu > li > a').each(function() {
+	// include icons menu
+	$('header .menu > li > a').each(function() {
         if ( $(this).parent('li').children('ul').size() > 0 ) {
             $(this).append(' <i class="fa fa-angle-down"></i>');
         }
     });
 
-	$('.sub-menu > li > a').each(function() {
+	// include icons submenu
+	$('header .sub-menu > li > a').each(function() {
         if ( $(this).parent('li').children('ul').size() > 0 ) {
             $(this).append('<i class="fa fa-angle-right"></i>');
         }
@@ -332,7 +333,7 @@ $(function(){
 
 	// store category active
 	$('.store-categories a').click( function() {
-		$('.store-categories li').removeClass('active current-cat current-cat-parent');
+		$('.store-categories li').removeClass('active current-cat current-menu-item current-cat-parent current-comercio-categoria-ancestor');
 		$(this).parent().addClass('current-cat');
 	});
 

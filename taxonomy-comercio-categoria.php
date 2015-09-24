@@ -3,11 +3,9 @@
 <?php get_template_part( 'header' ); ?>
 
 <div class="store-categories">
-	<ul class="container">
-		<li><a href="<?php bloginfo( 'url' ); ?>/comercios" title="Todos">Todos</a></li>
-		<?php $cat = array( 'title_li' => null, 'taxonomy' => 'comercio-categoria', 'parent' => 0 ); ?>
-		<?php wp_list_categories( $cat ); ?>
-	</ul>
+	<div class="container">
+		<?php wp_nav_menu( array( 'theme_location' => 'store-categories', 'container_class' => 'store-categories-menu' ) ); ?>
+	</div>
 </div>
 
 <div class="container">

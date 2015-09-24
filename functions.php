@@ -1,4 +1,6 @@
 <?php
+
+add_action( 'init', 'register_my_menus' );
 	// Change login logo
 	function custom_login_logo() {
 		echo
@@ -202,6 +204,16 @@
 		    </ul>';
 		}
 		add_action( 'wp_dashboard_setup', 'piabedias_add_dashboard_widgets' );
+	}
+
+	// Register menus
+	function register_my_menus() {
+	  register_nav_menus(
+	    array(
+	      'header'           => __( 'header' ),
+	      'store-categories' => __( 'store-categories' )
+	    )
+	  );
 	}
 
 	// Theme support

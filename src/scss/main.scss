@@ -517,49 +517,50 @@ nav {
 }
 
 // =menu
-
-.menu {
-	float: left;
-	font-size: 13px;
-	font-weight: bold;
-
-	> li {
+	header {
+	.menu {
 		float: left;
-		position: relative;
-		margin-left: 1px;
-		transition: all .2s;
-	}
-
-	// Insert icon menu
-	> li > a > i {
-		float: right;
-		margin: 1px 0 0 8px;
-		font-size: 18px;
-	}
-
-	// Submentu active
-	li:hover > .sub-menu, .active {
-		visibility: visible;
-		opacity: 1;
-	}
-
-	> li > a {
-		display: block;
-		padding: 19px 20px 18px 20px;
+		font-size: 13px;
 		font-weight: bold;
-		color: #b1bccd;
-	}
 
-	> li:hover, > li > a:hover, > li:hover > a,
-	> li:focus, > li > a:focus, > li:focus > a,
-	> .current-menu-item > a {
-		background: lighten($color-secondary, 8%);
-		color: #fff;
-	}
+		> li {
+			float: left;
+			position: relative;
+			margin-left: 1px;
+			transition: all .2s;
+		}
 
-	> li > a:active {
-		color: lighten($color-secondary, 50%);
-		transition: none;
+		// Insert icon menu
+		> li > a > i {
+			float: right;
+			margin: 1px 0 0 8px;
+			font-size: 18px;
+		}
+
+		// Submentu active
+		li:hover > .sub-menu, .active {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		> li > a {
+			display: block;
+			padding: 19px 20px 18px 20px;
+			font-weight: bold;
+			color: #b1bccd;
+		}
+
+		> li:hover, > li > a:hover, > li:hover > a,
+		> li:focus, > li > a:focus, > li:focus > a,
+		> .current-menu-item > a {
+			background: lighten($color-secondary, 8%);
+			color: #fff;
+		}
+
+		> li > a:active {
+			color: lighten($color-secondary, 50%);
+			transition: none;
+		}
 	}
 }
 
@@ -1214,7 +1215,11 @@ main {
 		color: $color-primary;
 	}
 
-	a:active, .current-cat a, .current-cat-parent a {
+	a:active,
+	.current-cat a,
+	.current-menu-item a,
+	.current-cat-parent a,
+	.current-comercio-categoria-ancestor a {
 		background: $color-primary;
 		color: #fff;
 	}
@@ -1522,13 +1527,11 @@ main {
 	}
 
 	.product:hover, .product:focus {
-		opacity: .9;
 		color: $color-primary;
 	}
 
 	.product:active {
 		color: #444;
-		opacity: 1;
 	}
 
 	img {

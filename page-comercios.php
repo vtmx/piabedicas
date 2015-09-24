@@ -4,11 +4,7 @@
 
 <div class="store-categories">
 	<div class="container">
-		<ul>
-			<li class="current-cat"><a href="<?php bloginfo( 'url' ); ?>/comercios" title="Todos">Todos</a></li>
-			<?php $cat = array( 'title_li' => null, 'taxonomy' => 'comercio-categoria', 'parent' => 0 ); ?>
-			<?php wp_list_categories( $cat ); ?>
-		</ul>
+		<?php wp_nav_menu( array( 'theme_location' => 'store-categories', 'container_class' => 'store-categories-menu' ) ); ?>
 	</div>
 </div>
 
