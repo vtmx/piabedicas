@@ -221,8 +221,9 @@ add_action( 'init', 'register_my_menus' );
 	add_theme_support( 'custom-header' );
 	add_theme_support( 'html5', array( 'caption', 'comment-list', 'comment-form', 'gallery', 'search-form' ));
 	add_theme_support( 'menus' );
-	add_theme_support( 'post-formats' );
 	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'automatic-feed-links' );
 
 	// Using Plugin Simple Image Sizes
 	add_image_size( 'store-thumb', 200, 160, true );
@@ -267,4 +268,21 @@ add_action( 'init', 'register_my_menus' );
 	}
 	add_action( 'pre_get_posts', 'make_blank_search' );
 
+
+	// Theme check
+	if ( ! isset( $content_width ) ) { $content_width = 600; }
+	register_sidebars( $number, $args );
+
+	add_action( 'widgets_init', 'vitormelo_widgets' );
+	function vitormelo_widgets() {
+	    register_sidebar( array(
+	        'name' => __( 'Main Sidebar', 'vitormelo' ),
+	        'id' => 'sidebar-1',
+	        'description' => __( 'Widgets in this area will be shown on all posts and pages.', 'theme-slug' ),
+	        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</li>',
+			'before_title'  => '<h2 class="title-widget">',
+			'after_title'   => '</h2>',
+	    ) );
+	}
 ?>

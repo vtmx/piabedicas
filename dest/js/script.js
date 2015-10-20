@@ -189,22 +189,15 @@ $(function(){
 	// Submenu show on focus
 	// ----------------------------------------------------------------------------
 
-	// variables elements
-	$('header .menu > li > a').each(function() {
-		if ( $(this).text() === 'Comércios' ) {
-			$(this).parent('li').addClass('menu-item-store');
-		}
-	});
-
-	// show sub-menu on focus
-	$('header .menu > li > a').focus(function(){
-		$('.sub-menu').addClass('active');
-	});
-
-	// hidden sub-menu when focusout
-	$('header .menu > li > a').focusout(function() {
-		$('.sub-menu').removeClass('active');
-	});
+	// // show sub-menu on focus
+	// $('header .menu > li > a').focus(function(){
+	// 	$('.sub-menu').addClass('active');
+	// });
+	//
+	// // hidden sub-menu when focusout
+	// $('header .menu > li > a').focusout(function() {
+	// 	$('.sub-menu').removeClass('active');
+	// });
 
 	// include icons menu
 	$('header .menu > li > a').each(function() {

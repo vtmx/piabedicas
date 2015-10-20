@@ -1,7 +1,6 @@
 // Modules Requires
 var gulp        = require('gulp');
 var sass        = require('gulp-ruby-sass');
-var uglify      = require('gulp-uglify');
 var concat      = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 

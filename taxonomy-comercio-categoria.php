@@ -19,17 +19,17 @@
 			// WP_Query arguments
 			$args = array (
 				'post_type'              => 'comercio',
-				'orderby'                => 'rand',
-				'pagination'             => true,
-				'paged'                  => get_query_var('paged'),
-				'posts_per_page'         => '6',
+				'orderby'                => 'name',
+				'order'                  => 'ASC',
+				'paged'                  => $paged,
+				'posts_per_page'         => 6,
 				'tax_query' => array(
                 array(
 	                    'taxonomy'       => 'comercio-categoria',
 	                    'field'          => 'slug',
 	                    'terms'          => $term->slug
 	                )
-	            ),
+	            )
 			);
 
 			// The Query
@@ -42,7 +42,7 @@
 						<?php if ( get_field( 'store-active' ) ) { ?>
 							<?php the_post_thumbnail( 'store-thumb', array( 'size' => 'store-thumb', 'class' => 'store-thumb', 'alt' => 'Logo do comércio ' . get_the_title() ) ); ?>
 						<?php } else { ?>
-							<img class="store-thumb" src="<?php bloginfo( 'template_directory' ); ?>/img/no-logo.png" alt="Sem logo">
+							<img class="store-thumb" src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/no-logo.png" alt="Sem logo">
 						<?php } ?>
 						<h2 class="store-name"><?php the_title(); ?></h2>
 					</a>

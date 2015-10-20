@@ -2,12 +2,12 @@
 
 		<footer role="contentinfo">
 			<div class="container">
-				<div class="author">Desenvolvido por <a href="http://vitormelo.com.br" target="_blank">Vitor Melo</a>
+				<div class="author bypostauthor">Desenvolvido por <a href="<?php echo esc_url( 'http://vitormelo.com.br' );?>" target="_blank">Vitor Melo</a>
 			</div>
 		</footer>
 
 		<!-- Script -->
-		<script src="<?php bloginfo('template_directory'); ?>/dest/js/script.js"></script>
+		<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/dest/js/script.js"></script>
 
 		<!-- WordPress -->
 		<?php wp_footer(); ?>

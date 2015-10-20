@@ -342,12 +342,12 @@
 	background-position: 0 0;
 	cursor: pointer;
 	z-index: 8040;
-	-webkit-transition: none;
+	transition: none;
 }
 
 .fancybox-close:hover{
 	background-position: -31px 0;
-	-webkit-transition: none;
+	transition: none;
 }
 
 .fancybox-close:active{

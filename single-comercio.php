@@ -32,7 +32,7 @@
 		<?php if ( get_field( 'store-active' ) ) { ?>
 			<?php the_post_thumbnail( 'store-single-thumb', array( 'size' => 'store-single-thumb', 'class' => 'store-thumb', 'itemprop' => 'logo', 'alt' => 'Logo do comércio ' . get_the_title() ) ); ?>
 		<?php } else { ?>
-			<img class="store-thumb" itemprop="logo" src="<?php bloginfo( 'template_directory' ); ?>/img/no-logo.png" alt="Sem logo">
+			<img class="store-thumb" itemprop="logo" src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/no-logo.png" alt="Sem logo">
 		<?php } ?>
 
 		<div class="store-info">
@@ -187,7 +187,7 @@
 							<?php if ( get_field( 'store-active' ) ) { ?>
 								<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'store-thumb', 'class' => 'store-thumb', 'alt' => 'Logo do comércio ' . get_the_title() ) ); ?>
 							<?php } else { ?>
-								<img class="store-thumb" src="<?php bloginfo( 'template_directory' ); ?>/img/no-logo.png" alt="Sem logo">
+								<img class="store-thumb" src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/no-logo.png" alt="Sem logo">
 							<?php } ?>
 							<h2 class="store-name"><?php the_title(); ?></h2>
 						</a>

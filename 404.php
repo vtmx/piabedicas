@@ -6,12 +6,12 @@
 		<div class="container">
 			<hgroup>
 				<h3>Nenhuma página encontrada</h3>
-				<h4>Talvez você possa achar algo pesquisando por outra palavra</h4>
+				<h4>Talvez você; possa achar algo pesquisando por outra palavra</h4>
 			</hgroup>
 
 			<div class="error-image"></div>
 
-			<a href="<?php bloginfo('url'); ?>" class="btn" title="Voltar para a página incial">Voltar para página incial</a>
+			<a href="<?php echo esc_url( home_url() ); ?>" class="btn" title="Voltar para a p&aacute;gina incial">Voltar para página incial</a>
 		</div>
 	</div>
 </main>

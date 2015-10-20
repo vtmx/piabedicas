@@ -10,7 +10,7 @@
 			<?php
 				$allsearch = new WP_Query();
 				$allsearch -> query(array( 's' => $s, 'showposts' => '-1',	'posts_per_page' => 3 ));
-				$key = wp_specialchars($s, 1);
+				$key = esc_html($s, 1);
 				$count = $allsearch->post_count;
 				echo( 'Encontrado(s) um total de '.$count. ' páginas com a palavra <span>'. $key .'</span>' );
 				wp_reset_query();
@@ -21,7 +21,11 @@
 		<div class="search-result">
 			<?php while( have_posts() ){ the_post(); ?>
 				<a class="search-link" href="<?php the_permalink(); ?>">
-					<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'store-thumb', 'class' => 'store-thumb' ) ); ?>
+					<?php if ( has_post_thumbnail() ) { ?>
+						<?php the_post_thumbnail( 'thumbnail', array( 'size' => 'store-thumb', 'class' => 'store-thumb' ) );  ?>
+					<?php } else { ?>
+						<?php echo '<img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/no-logo.png">'; ?>
+					<?php } ?>
 					<h2><?php the_title(); ?></h2>
 				</a>
 			<?php } ?>
@@ -42,7 +46,7 @@
 
 				<div class="error-image"></div>
 
-				<a href="<?php bloginfo( 'url' ); ?>" class="btn btn-primary" title="Voltar para a página incial">Voltar para página incial</a>
+				<a href="<?php echo esc_url( home_url() ); ?>" class="btn btn-primary" title="Voltar para a página incial">Voltar para página incial</a>
 			</div>
 		<?php } ?>
 	</div><!-- #content -->
