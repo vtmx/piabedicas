@@ -2,7 +2,7 @@
 
 		<footer role="contentinfo">
 			<div class="container">
-				<div class="author bypostauthor">Desenvolvido por <a href="<?php echo esc_url( 'http://vitormelo.com.br' );?>" target="_blank">Vitor Melo</a>
+				<div class="author">Desenvolvido por <a href="<?php echo esc_url( 'http://vitormelo.com.br' );?>" target="_blank">Vitor Melo</a>
 			</div>
 		</footer>
 

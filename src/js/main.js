@@ -16,14 +16,14 @@ $(function(){
 	// include icons menu
 	$('header .menu > li > a').each(function() {
         if ( $(this).parent('li').children('ul').size() > 0 ) {
-            $(this).append(' <i class="fa fa-angle-down"></i>');
+            $(this).append('<svg class="icon icon-angle-down"><use xlink:href="#icon-angle-down"></use></svg>');
         }
     });
 
 	// include icons submenu
 	$('header .sub-menu > li > a').each(function() {
         if ( $(this).parent('li').children('ul').size() > 0 ) {
-            $(this).append('<i class="fa fa-angle-right"></i>');
+            $(this).append('<svg class="icon icon-angle-right"><use xlink:href="#icon-angle-right"></use></svg>');
         }
     });
 

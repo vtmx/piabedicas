@@ -8,6 +8,7 @@
 		<meta name="msvalidate.01" content="F1482EA6DEE1CBDD3BE76A141F78B8B0">
 		<meta name="robots" content="index, follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
 
 		<!-- Title -->
 		<title><?php wp_title(); ?></title>
@@ -43,6 +44,10 @@
 	</head>
 
 	<body <?php body_class(); ?>>
+
+		<!-- Import Icons -->
+		<?php echo file_get_contents('http://localhost:3000/piabedicas/wp-content/themes/piabedicas/img/icons.svg'); ?>
+
 		<header role="banner">
 			<div class="container">
 				<a href="<?php echo esc_url( home_url() ); ?>" class="logo">
@@ -58,7 +63,7 @@
 					<button type="submit" id="searchsubmit"><i></i></button>
 				</form>
 
-				<a href="<?php echo esc_url( 'http://facebook.com/piabedicas' );?>" class="facebook" target="_blank"><i class="fa fa-facebook-official"></i></a>
+				<a href="<?php echo esc_url( 'http://facebook.com/piabedicas' );?>" class="facebook" target="_blank"><svg class="icon icon-facebook-square"><use xlink:href="#icon-facebook-square"></use></svg></a>
 
 				<div class="ajax-loading-icon animation"></div>
 				<div class="ajax-loading-error animation">Falha no carregamento</div>

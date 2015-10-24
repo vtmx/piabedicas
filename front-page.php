@@ -22,8 +22,8 @@
 			</div>
 
 			<div class="slider-controls">
-				<button class="prev"><i class="fa fa-angle-left"></i></button>
-				<button class="next"><i class="fa fa-angle-right"></i></button>
+				<button class="prev"><svg class="icon icon-angle-left"><use xlink:href="#icon-angle-left"></use></svg></button>
+				<button class="next"><svg class="icon icon-angle-right"><use xlink:href="#icon-angle-right"></use></svg></button>
 			</div>
 		</div>
 	</section>
