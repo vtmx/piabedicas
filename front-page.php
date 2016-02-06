@@ -35,25 +35,25 @@
 
 			<div class="advantages">
 				<div class="advantage">
-					<i class="fa fa-globe"></i>
+					<svg class="icon icon-globe"><use xlink:href="#icon-globe"></use></svg>
 					<h4>Internet</h4>
 					<p>Hoje a Web é o meio mais prático do seu cliente encontrar você.</p>
 				</div>
 
 				<div class="advantage">
-					<i class="fa fa-users"></i>
+					<svg class="icon icon-user"><use xlink:href="#icon-user"></use></svg>
 					<h4>Clientes</h4>
 					<p>Direcionado ao público do município de Piabetá, será fácil encontrar seu comércio.</p>
 				</div>
 
 				<div class="advantage">
-					<i class="fa fa-facebook-official"></i>
+					<svg class="icon icon-facebook-official"><use xlink:href="#icon-facebook-official"></use></svg>
 					<h4>Mídias sociais</h4>
 					<p>O Piabedicas sincroniza suas novidades no Facebook, para ficar por dentro curta <a href="http://facebook.com/piabedicas">nossa página</a>.</p>
 				</div>
 
 				<div class="advantage">
-					<i class="fa fa-money"></i>
+					<svg class="icon icon-money"><use xlink:href="#icon-money"></use></svg>
 					<h4>Economize</h4>
 					<p>Por um pequeno valor você irá divulgar seu próprio link piabedicas.</p>
 				</div>

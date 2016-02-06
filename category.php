@@ -21,7 +21,6 @@
 			<h2 class="widget-title">Categorias</h2>
 			<ul>
 				<li class="cat-item"><a href="<?php echo esc_url( home_url() ); ?>/blog">Todos</a></li>
-
 				<?php $args = array( 'title_li' => null, 'exclude' => '1' ); ?>
 				<?php wp_list_categories( $args ); ?>
 			</ul>

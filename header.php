@@ -14,7 +14,7 @@
 		<title><?php wp_title(); ?></title>
 
 		<!-- Styles -->
-		<link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/dest/css/style.css">
+
 
 		<!-- Favicons -->
 		<link rel="apple-touch-icon" sizes="57x57" href="<?php echo esc_url( get_template_directory_uri() ); ?>/img/favicons/apple-touch-icon-57x57.png">
@@ -46,7 +46,7 @@
 	<body <?php body_class(); ?>>
 
 		<!-- Import Icons -->
-		<?php echo file_get_contents('http://localhost:3000/piabedicas/wp-content/themes/piabedicas/img/icons.svg'); ?>
+		<?php  echo  file_get_contents( get_template_directory_uri ( ) . '/img/icons.svg' ); ?>
 
 		<header role="banner">
 			<div class="container">
@@ -62,8 +62,6 @@
 					<input type="search" id="searchtext" value="" name="s" placeholder="Pesquisar">
 					<button type="submit" id="searchsubmit"><i></i></button>
 				</form>
-
-				<a href="<?php echo esc_url( 'http://facebook.com/piabedicas' );?>" class="facebook" target="_blank"><svg class="icon icon-facebook-square"><use xlink:href="#icon-facebook-square"></use></svg></a>
 
 				<div class="ajax-loading-icon animation"></div>
 				<div class="ajax-loading-error animation">Falha no carregamento</div>

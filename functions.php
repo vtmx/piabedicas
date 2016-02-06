@@ -1,6 +1,18 @@
 <?php
 
-add_action( 'init', 'register_my_menus' );
+	// Load CSS
+	function load_css() {
+		wp_enqueue_style( 'piabedicas-styles', get_template_directory_uri() . '/dest/css/style.css' );
+		wp_enqueue_style( 'piabedicas-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600)' );
+	}
+	add_action( 'wp_enqueue_scripts', 'load_css' );
+
+	// Load JS
+	function load_js() {
+		wp_enqueue_style( 'piabedicas-scripts', get_template_directory_uri() . '/dest/js/script.js' );
+	}
+	add_action( 'wp_enqueue_scripts', 'load_js' );
+
 	// Change login logo
 	function custom_login_logo() {
 		echo
@@ -84,6 +96,11 @@ add_action( 'init', 'register_my_menus' );
 						display: none;
 					}
 
+					/* Category Store */
+					#comercio-categoriadiv {
+						display: none;
+					}
+
 					/* Version footer */
 					#footer-upgrade {
 						display: none;
@@ -107,7 +124,12 @@ add_action( 'init', 'register_my_menus' );
 					}
 
 					/* Hide YoastSeo to post store */
-					#wpseo_meta {
+					#wpseo_meta, #wpseo-score {
+						display: none;
+					}
+
+					/* Hide Regenerate Thumb */
+					.compat-field-sis-regenerate {
 						display: none;
 					}
 				</style>";
@@ -215,6 +237,7 @@ add_action( 'init', 'register_my_menus' );
 	    )
 	  );
 	}
+	add_action( 'init', 'register_my_menus' );
 
 	// Theme support
 	add_theme_support( 'custom-background' );
